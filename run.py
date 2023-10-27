@@ -78,6 +78,10 @@ def play_hangman(word):
     else:
         print("Sorry you ran out of tries. The word was " + word + ". Maybe next time.")
 
-word = get_rand_word()
-print("The word is " + word)
-play_hangman(word)
+def main():
+    """
+    Run all program functions
+    """
+    word = get_rand_word()
+    print("The word is " + word)
+    play_hangman(word)
