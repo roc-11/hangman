@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import random
+import re
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,7 +24,11 @@ def get_rand_word():
     words_sheet = SHEET.worksheet('words')
     words_list = words_sheet.get_all_values()
     random_word = random.choice(words_list)
-    word = str(random_word).upper() #convert to word to a string
+
+    #return random word as string, remove non-alphanumeric characters
+    word_to_string = str(random_word).upper()
+    word_remove_non_alpha = filter(str.isalpha,word_to_string)
+    word="".join(word_remove_non_alpha)
 
     return word
 
@@ -71,7 +76,7 @@ def play_hangman(word):
     if guessed: #if guess is True, player wins
         print("Congrats! You win!")
     else:
-        print("Sorry you ran out of tries. The word was" + word + ". Maybe next time.")
+        print("Sorry you ran out of tries. The word was " + word + ". Maybe next time.")
 
 word = get_rand_word()
 print("The word is " + word)
