@@ -1,32 +1,43 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Hangman Python Game
 
-Welcome,
+## Developer: Róisín O'Connell 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+![Hangman Mockup Images]()
 
-## Reminders
+[View the live project here]()
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+[View GitHub repository]()
 
-## Creating the Heroku app
+## Table of Contents
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+- [Hangman Python Game](#hangman-python-game)
+  - [Developer: Róisín O'Connell](#developer-róisín-oconnell)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
 
-1. `heroku/python`
-2. `heroku/nodejs`
+***
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Introduction
+Hangman is a Python-based terminal game, which runs in the [Code Institute](https://codeinstitute.net/ie/ "Link to Code Institute homepage") mock terminal on [Heroku](https://www.heroku.com/ "Link to Heroku hompepage"). This project enables users to guess letters in order to reveal the mystery word. Users can select a level of difficulty and words are categorized into different categories. Users can make up to 6 incorrect guesses. Visual feedback is provided to users via ASCII Hangman illustrations for incorrect guesses.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+The game was made for the third of five Milestone Projects required to complete the Diploma in Full Stack Software Development (e-Commerce Applications) program at [Code institute](https://codeinstitute.net/ie/ "Link to Code Institute homepage").
 
-Connect your GitHub repository and deploy as normal.
+The main requirements of this project are to build a command-line application that is useful and usable, and allows users to manage a common dataset about a particular domain.
 
-## Constraints
+## How To Play
+Hangman is a word guessing game where a player tries to reveal a hidden word by suggesting individual letters. And incorrect guess results in a piece of a hangman figure being drawn, while correct guesses reveal the guessed letter's position. You can read more about the Hangman game in general here (LINK).
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+Step by step version of how to play here
 
----
+## Planning Stage
 
-Happy coding!
+### Aim
+The aim of this project is to build a Python-based Hangman game, which is fun and accessible to users, handles errors and is easy for users to navigate through the instructions. Users will play the game via a mock terminal on [Heroku](https://www.heroku.com/ "Link to Heroku hompepage").
+
+### Application Goals
+    * To provide users with a terminal-based game of Hangman which they can play.
+    * To produce a Python-based Hangman game which both challenges and entertains users.
+    * To create an environment and rules that are easily interpreted and accessible for users.
+    * To implement error and exception handling to provide users with useful and informative feedback, and make for a better game experience.
+
+### User Goals
