@@ -14,8 +14,13 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSREAD_CLIENT.open('hangman')
 
-print("Welcome to Hangman")
-print("______________________________\n")
+def welcome():
+    """
+    Welcome user to the game on start up.
+    """
+    print("WELCOME TO HANGMAN!")
+    print("______________________________\n")
+    name = input("Please enter your preferred game name:\n")
 
 def get_rand_word():
     """
@@ -82,6 +87,9 @@ def main():
     """
     Run all program functions
     """
+    welcome()
     word = get_rand_word()
     print("The word is " + word)
     play_hangman(word)
+
+main()
