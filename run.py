@@ -124,23 +124,24 @@ def welcome():
     """
     Welcome user to the game on start up.
     """
-    #while True:
     print(GAME_LOGO)
     print(MENU_ART)
     print("WELCOME TO HANGMAN!")
     print("______________________________\n")
-    name = input("Please enter your preferred game name:\n")
 
+    while True:
+        name = input("Please enter your preferred game name:\n")
         #validate username
-        # if username.isalpha():
-        #     print("Greetings " + name + "! Glad to have you playing today!\n")
-        #     break
-        # else:
-        #     except ValueError as e:
-        #     print(f'Invalid username: {e}, please try again.')
-        #     print("Please enter your name using letters only.\n")
-        #     return False
-    #return name
+        if len(name) == 0 or name == "":
+            print("Sorry, you must enter a username!")
+            continue
+        elif not name.isalpha():
+            print("Sorry, your name must be letters ONLY!")
+            continue
+        else:
+            print("______________________________\n")
+            print("Greetings " + name + "! Glad to have you playing today!\n")
+            return name
 
 def get_rand_word():
     """
