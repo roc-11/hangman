@@ -152,9 +152,14 @@ def get_rand_word():
 
     print("1. Countries")
     print("2. Sports")
+    print("3. Zoo Animals")
+    print("4. Fruit")
+    print("5. Capital Cities (Europe)")
+    print("6. Harry Potter")
+    print("7. Pokémon")
     category = input("Please select a category from the choices above: \n")
 
-    valid_category = ["1", "2"]
+    valid_category = ["1", "2", "3", "4", "5", "6", "7"]
     words_sheet = SHEET.worksheet('words')
     #check category selection is valid
     if category not in valid_category:
@@ -166,6 +171,21 @@ def get_rand_word():
     elif category == "2":
         words_list = words_sheet.col_values(2)
         category_name = "Sports"
+    elif category == "3":
+        words_list = words_sheet.col_values(3)
+        category_name = "Zoo Animals"
+    elif category == "4":
+        words_list = words_sheet.col_values(4)
+        category_name = "Fruit"
+    elif category == "5":
+        words_list = words_sheet.col_values(5)
+        category_name = "Capital Cities (Europe)"
+    elif category == "6":
+        words_list = words_sheet.col_values(6)
+        category_name = "Harry Potter"
+    elif category == "7":
+        words_list = words_sheet.col_values(7)
+        category_name = "Pokémon"
     #words_list = words_sheet.get_all_values()
     random_word = random.choice(words_list)
 
