@@ -145,10 +145,28 @@ def welcome():
 
 def get_rand_word():
     """
-    Get random word from Google Sheets words list
+    Get user category selection.
+    Get random word from Google Sheets words list.
     """
+    global category_name
+
+    print("1. Countries")
+    print("2. Sports")
+    category = input("Please select a category from the choices above: \n")
+
+    valid_category = ["1", "2"]
     words_sheet = SHEET.worksheet('words')
-    words_list = words_sheet.get_all_values()
+    #check category selection is valid
+    if category not in valid_category:
+        print("Sorry, that is not a valid selection.")
+        get_rand_word()
+    elif category == "1":
+        words_list = words_sheet.col_values(1)
+        category_name = "Countries"
+    elif category == "2":
+        words_list = words_sheet.col_values(2)
+        category_name = "Sports"
+    #words_list = words_sheet.get_all_values()
     random_word = random.choice(words_list)
 
     #return random word as string, remove non-alphanumeric characters
@@ -168,7 +186,8 @@ def play_hangman(word):
     guessed_letters = []
     tries = 6
 
-    print("Let's play Hangman!")
+    print("Let's play Hangman!\n")
+    print(f"Loading secret word from {category_name} category...")
     print("\n" + display_hangman(tries))
     print(word_completion)
     print("\n")
