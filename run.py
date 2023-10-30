@@ -193,8 +193,10 @@ def play_hangman(word):
                 #possible the guess now completes the word
                 if "_" not in word_completion: 
                     guessed = True
+        elif len(guess) > 1: #if user enters more than one letter at a time
+            print("Sorry, only 1 letter at a time is allowed!")
         else:
-            print("Not a valid guess.")
+            print("Not a valid guess. Only letters allowed!")
         print("Number of tries", tries)
         print("\n" + display_hangman(tries) + "\n")
         print(word_completion)
