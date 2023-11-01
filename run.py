@@ -138,7 +138,7 @@ def main_menu():
             play_hangman(word)
             break
         elif menu_options == "2":
-            #show_instructions()
+            show_instructions()
             continue
         elif menu_options == "3":
             #clear_terminal()
@@ -148,11 +148,36 @@ def main_menu():
             print("Please choose option 1, 2 or 3.")
             break
 
+def show_instructions():
+    """
+    Show user game instructions.
+    User will access these by selecting "2" on main menu.
+    """
+    print(
+        """
+        This is a classic game of Hangman.
+        Begin by pressing 1 on the main menu screen.
+        First, choose a word category. The computer will then generate a 
+        random mystery word from this category, with each letter shown as 
+        an underscore (e.g. _ _ _ _ ). 
+        The player must try to guess the word by typing one letter at a time.
+        If the guess is correct, the letter will appear in the word.
+        Each incorrect guess will cost you one of your 6 lives, and the 
+        Hangman will start to be hanged!
+        Once you run out of lives, the Hangman will die and you will lose
+        the game :(
+        To win - guess the word before your lives reach ZERO. :)
+        The fate of the Hangman lies in your hands!! GOOD LUCK!! 
+        """
+    )
+    return_to_menu = input("Please press Enter to return to the main menu. \n")
+    main_menu()
+
+
 def welcome():
     """
     Welcome user to the game on start up.
     """
-    print("WELCOME TO HANGMAN!")
     print("______________________________\n")
 
     while True:
@@ -176,6 +201,9 @@ def get_rand_word():
     """
     global category_name
 
+    print("WELCOME TO HANGMAN!")
+    print("______________________________\n")
+    
     print("1. Countries")
     print("2. Sports")
     print("3. Zoo Animals")
