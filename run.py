@@ -6,7 +6,12 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 import re
+from colorama import Fore, Back, Style, init
 
+#Initialize colorama, autoreset after each use of Colorama
+init(autoreset=True)
+
+#Google Sheet set up
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -168,8 +173,8 @@ def main_menu():
     valid_menu_selection = ['1', '2', '3']
 
     if menu_options not in valid_menu_selection: #check user input is valid
-        print("INVALID! Sorry, option not allowed.")
-        print("Please choose option 1, 2 or 3.")
+        print(Back.RED + "INVALID CHOICE! Sorry, option not allowed.")
+        print(Back.RED + "Please choose option 1, 2 or 3.")
         main_menu()
     elif menu_options == '1':
         word = get_rand_word()
