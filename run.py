@@ -7,6 +7,8 @@ from google.oauth2.service_account import Credentials
 import random
 import re
 from colorama import Fore, Back, Style, init
+from os import system, name # import only system from os
+import time 
 
 #Initialize colorama, autoreset after each use of Colorama
 init(autoreset=True)
@@ -158,6 +160,19 @@ def display_hangman(tries):
     ]
     return stages[tries]
 
+def clear_terminal():
+    """
+    Clears the terminal. Code from:
+    https://www.geeksforgeeks.org/clear-screen-python/
+    """
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+ 
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
+
 def main_menu():
     """
     Main menu shown to user on startup.
@@ -184,6 +199,7 @@ def main_menu():
     elif menu_options == '3':
         #clear the terminal and exit the game
         print("exit game now")
+        clear_terminal()
 
 def show_instructions():
     """
