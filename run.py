@@ -120,12 +120,38 @@ def display_hangman(tries):
     ]
     return stages[tries]
 
+def main_menu():
+    """
+    Main menu shown to user on startup.
+    Provide user with 4 options
+    """
+    print(GAME_LOGO)
+    print(MENU_ART)
+    print("Type 1: To play the game")
+    print("Type 2: For game rules")
+    print("Type 3: To exit")
+
+    while True:
+        menu_options = input("Please choose an option 1, 2 or 3 and press Enter:\n")
+        if menu_options == "1":
+            word = get_rand_word()
+            play_hangman(word)
+            break
+        elif menu_options == "2":
+            #show_instructions()
+            continue
+        elif menu_options == "3":
+            #clear_terminal()
+            #sys.exit()
+            break
+        else:
+            print("Please choose option 1, 2 or 3.")
+            break
+
 def welcome():
     """
     Welcome user to the game on start up.
     """
-    print(GAME_LOGO)
-    print(MENU_ART)
     print("WELCOME TO HANGMAN!")
     print("______________________________\n")
 
@@ -200,6 +226,8 @@ def play_hangman(word):
     """
     Function to play the game
     """
+    welcome()
+    print("The word is " + word)
 
     word_completion = "_" * len(word) #length of chosen word
     guessed = False
@@ -251,9 +279,10 @@ def main():
     """
     Run all program functions
     """
-    welcome()
-    word = get_rand_word()
-    print("The word is " + word)
-    play_hangman(word)
+    main_menu()
+    #welcome()
+    #word = get_rand_word()
+    #print("The word is " + word)
+    #play_hangman(word)
 
 main()
