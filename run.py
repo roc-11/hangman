@@ -163,23 +163,22 @@ def main_menu():
     print("Type 1: To play the game")
     print("Type 2: For game rules")
     print("Type 3: To exit")
+    
+    menu_options = input("Please choose an option 1, 2 or 3 and press Enter:\n")
+    valid_menu_selection = ['1', '2', '3']
 
-    while True:
-        menu_options = input("Please choose an option 1, 2 or 3 and press Enter:\n")
-        if menu_options == "1":
-            word = get_rand_word()
-            play_hangman(word)
-            break
-        elif menu_options == "2":
-            show_instructions()
-            continue
-        elif menu_options == "3":
-            #clear_terminal()
-            #sys.exit()
-            break
-        else:
-            print("Please choose option 1, 2 or 3.")
-            break
+    if menu_options not in valid_menu_selection: #check user input is valid
+        print("INVALID! Sorry, option not allowed.")
+        print("Please choose option 1, 2 or 3.")
+        main_menu()
+    elif menu_options == '1':
+        word = get_rand_word()
+        play_hangman(word)
+    elif menu_options == '2':
+        show_instructions()
+    elif menu_options == '3':
+        #clear the terminal and exit the game
+        print("exit game now")
 
 def show_instructions():
     """
@@ -200,7 +199,7 @@ def show_instructions():
         Hangman will start to be hanged!
         Once you run out of lives, the Hangman will die and you will lose
         the game :(
-        To win - guess the word before your lives reach ZERO. :)
+        To win: guess the word before your lives reach ZERO. :)
         The fate of the Hangman lies in your hands!! GOOD LUCK!! 
         """
     )
