@@ -4,9 +4,9 @@
 
 ![Hangman Mockup Images]()
 
-[View the live project here]()
+[View the live project here](https://hangman-roc-9218949e7f7b.herokuapp.com/)
 
-[View GitHub repository]()
+[View GitHub repository](https://github.com/roc-11/hangman)
 
 ## Table of Contents
 
@@ -35,9 +35,9 @@ Step by step version of how to play here
 The aim of this project is to build a Python-based Hangman game, which is fun and accessible to users, handles errors and is easy for users to navigate through the instructions. Users will play the game via a mock terminal on [Heroku](https://www.heroku.com/ "Link to Heroku hompepage").
 
 ### Application Goals
-    * To provide users with a terminal-based game of Hangman which they can play.
-    * To produce a Python-based Hangman game which both challenges and entertains users.
-    * To create an environment and rules that are easily interpreted and accessible for users.
-    * To implement error and exception handling to provide users with useful and informative feedback, and make for a better game experience.
+* To provide users with a terminal-based game of Hangman which they can play.
+* To produce a Python-based Hangman game which both challenges and entertains users.
+* To create an environment and rules that are easily interpreted and accessible for users.
+* To implement error and exception handling to provide users with useful and informative feedback, and make for a better game experience.
 
 ### User Goals
