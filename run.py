@@ -191,6 +191,7 @@ def main_menu():
     if menu_options not in valid_menu_selection: #check user input is valid
         print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
         print(Back.BLUE + "Please choose option 1, 2 or 3.")
+        time.sleep(3)
         main_menu()
     elif menu_options == '1':
         word = get_rand_word()
