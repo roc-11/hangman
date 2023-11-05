@@ -35,14 +35,14 @@ GAME_LOGO = """
     """
 
 RULES_ART = """
-      _______  _______  _______  _______          _______           _        _______  _______ 
-    (  ____ \(  ___  )(       )(  ____ \        (  ____ )|\     /|( \      (  ____ \(  ____ /
-    | (    \/| (   ) || () () || (    \/        | (    )|| )   ( || (      | (    \/| (    \/
-    | |      | (___) || || || || (__            | (____)|| |   | || |      | (__    | (_____ 
-    | | ____ |  ___  || |(_)| ||  __)           |     __)| |   | || |      |  __)   (_____  )
-    | | \_  )| (   ) || |   | || (              | (\ (   | |   | || |      | (            ) |
-    | (___) || )   ( || )   ( || (____/\        | ) \ \__| (___) || (____/\| (____/\/\____) |
-    (_______)|/     \||/     \|(_______/        |/   \__/(_______)(_______/(_______/\_______)
+      _______  _______  _______  _______        _______           _        _______  _______ 
+    (  ____ \(  ___  )(       )(  ____ \      (  ____ )|\     /|( \      (  ____ \(  ____ /
+    | (    \/| (   ) || () () || (    \/      | (    )|| )   ( || (      | (    \/| (    \/
+    | |      | (___) || || || || (__          | (____)|| |   | || |      | (__    | (_____ 
+    | | ____ |  ___  || |(_)| ||  __)         |     __)| |   | || |      |  __)   (_____  )
+    | | \_  )| (   ) || |   | || (            | (\ (   | |   | || |      | (            ) |
+    | (___) || )   ( || )   ( || (____/\      | ) \ \__| (___) || (____/\| (____/\/\____) |
+    (_______)|/     \||/     \|(_______/      |/   \__/(_______)(_______/(_______/\_______)
     """
 
 WIN_ART = """
@@ -396,7 +396,7 @@ def play_hangman(word):
     if guessed: #if guess is True, player wins
         print(f"{Fore.GREEN+Style.BRIGHT}{WIN_ART}")
         print(f"{Fore.GREEN}Congrats {player_name}! You win! :) ")
-        print(f"{Fore.GREEN}Woohoo...you saved the Hangman by guessing the word {word}!)
+        print(f"{Fore.GREEN}Woohoo...you saved the Hangman by guessing the word {word}!")
         play_hangman_again()
     else:
         print(f"{Fore.RED+Style.BRIGHT}{LOSE_ART}")
@@ -410,9 +410,5 @@ def main():
     Run all program functions
     """
     main_menu()
-    #welcome()
-    #word = get_rand_word()
-    #print("The word is " + word)
-    #play_hangman(word)
 
 main()
