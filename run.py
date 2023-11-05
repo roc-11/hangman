@@ -324,6 +324,25 @@ def get_rand_word():
 
     return word
 
+def play_hangman_again():
+    """
+    Asks user if they would like to play Hangman again, by entering Y or N.
+    Validate yes/no selection.
+    """
+    while True:
+        play_again_choice = input("Would you like to play Hangman again? Enter Y or N: \n")
+        if play_again_choice.upper() == "Y":
+            clear_terminal()
+            word = get_rand_word()
+            play_hangman(word)
+        elif play_again_choice.upper() == "N":
+            main_menu()
+        else:
+            print(f"{Back.BLUE+Style.BRIGHT}Sorry, only Y or N is a valid response.")
+            continue
+            
+        
+
 def play_hangman(word):
     """
     Function to play the game
@@ -379,10 +398,12 @@ def play_hangman(word):
     if guessed: #if guess is True, player wins
         print(f"{Fore.GREEN+Style.BRIGHT}{WIN_ART}")
         print(f"{Back.GREEN}Congrats {player_name}! You win!")
+        play_hangman_again()
     else:
         print(f"{Fore.RED+Style.BRIGHT}{LOSE_ART}")
         print(f"{Back.RED+Style.BRIGHT}Sorry {player_name}, you ran out of tries.")
         print(f"\nThe word was {word}. Maybe next time.")
+        play_hangman_again()
 
 def main():
     """
