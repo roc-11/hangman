@@ -245,6 +245,9 @@ def welcome():
     Welcome user to the game on start up.
     """
     print("______________________________\n")
+    print(f"Loading category...")
+    print(f"You have selected the category: {category_name}")
+    print("______________________________\n")
 
     while True:
         name = input("Please enter your preferred game name:\n")
@@ -322,6 +325,8 @@ def play_hangman(word):
     """
     Function to play the game
     """
+    clear_terminal()
+
     welcome()
     print("The word is " + word)
 
