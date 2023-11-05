@@ -41,3 +41,55 @@ The aim of this project is to build a Python-based Hangman game, which is fun an
 * To implement error and exception handling to provide users with useful and informative feedback, and make for a better game experience.
 
 ### User Goals
+
+## Features
+
+### Main Menu
+
+When a user launches the game, the main menu will be shown. A large ASCII Hangman Title is shown as well as some fun artwork. 
+The user has 3 options to choose from on this first screen:
+1. Play Game
+2. Game Rules
+3. Exit
+
+User input is needed to proceed. The user can select 1, 2 or 3 and hit enter to proceed. 
+The main_menu() function contains the code which deals with this initial screen. The list:
+
+        valid_menu_selection = ['1', '2', '3']
+
+is used to validate the user's selection. A selection entered outside of this list, e.g. 5 or "f", would result in an error message "INVALID CHOICE! Sorry, option not allowed." In this case, the user is again prompted to input a valid choice 1, 2, or 3. 
+
+### Play Hangman
+
+#### Category Selection 
+
+#### Input Username
+
+#### Generate Random, Mystery Word
+
+#### Winner Screen
+
+#### Game Over Screen
+
+#### Play Again
+
+### Game Rules 
+
+### Exit Hangman
+
+### Features to Implement in the Future
+
+## Technologies Used
+
+## Frameworks, Libraries & Programs Used
+
+## Testing
+
+## Bugs/Known Issues
+
+## Deployment
+
+## Credits
+
+## Acknowledgements
+
