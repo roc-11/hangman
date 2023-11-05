@@ -178,6 +178,9 @@ def main_menu():
     Main menu shown to user on startup.
     Provide user with 4 options
     """
+
+    clear_terminal()
+
     print(GAME_LOGO)
     print(MENU_ART)
     print("Type 1: To play the game")
@@ -188,8 +191,8 @@ def main_menu():
     valid_menu_selection = ['1', '2', '3']
 
     if menu_options not in valid_menu_selection: #check user input is valid
-        print(Back.RED + "INVALID CHOICE! Sorry, option not allowed.")
-        print(Back.RED + "Please choose option 1, 2 or 3.")
+        print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
+        print(Back.BLUE + "Please choose option 1, 2 or 3.")
         main_menu()
     elif menu_options == '1':
         word = get_rand_word()
@@ -206,6 +209,9 @@ def show_instructions():
     Show user game instructions.
     User will access these by selecting "2" on main menu.
     """
+
+    clear_terminal()
+
     print(RULES_ART)
     print(
         """
@@ -224,8 +230,14 @@ def show_instructions():
         The fate of the Hangman lies in your hands!! GOOD LUCK!! 
         """
     )
-    return_to_menu = input("Please press Enter to return to the main menu. \n")
-    main_menu()
+
+    while True:
+        return_to_menu = input("Please press Enter to return to the main menu. \n")
+        if return_to_menu == "":
+            main_menu()
+            break
+        else:
+            print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
 
 
 def welcome():
@@ -254,10 +266,12 @@ def get_rand_word():
     Get random word from Google Sheets words list.
     """
     global category_name
-
+    clear_terminal()
+    print(GAME_LOGO)
     print("WELCOME TO HANGMAN!")
     print("______________________________\n")
     
+    print("CATEGORIES:")
     print("1. Countries")
     print("2. Sports")
     print("3. Zoo Animals")
