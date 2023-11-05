@@ -253,10 +253,10 @@ def welcome():
         name = input("Please enter your preferred game name:\n")
         #validate username
         if len(name) == 0 or name == "":
-            print(f"{Back.RED+Style.BRIGHT}Sorry, you must enter a username!")
+            print(f"{Back.BLUE+Style.BRIGHT}Sorry, you must enter a username!")
             continue
         elif not name.isalpha():
-            print(f"{Back.RED+Style.BRIGHT}Sorry, your name must be letters ONLY!")
+            print(f"{Back.BLUE+Style.BRIGHT}Sorry, your name must be letters ONLY!")
             continue
         else:
             print("______________________________\n")
@@ -288,7 +288,7 @@ def get_rand_word():
     words_sheet = SHEET.worksheet('words')
     #check category selection is valid
     if category not in valid_category:
-        print(f"{Back.YELLOW+Style.BRIGHT}Sorry, that is not a valid selection.")
+        print(f"{Back.BLUE+Style.BRIGHT}Sorry, that is not a valid selection.")
         get_rand_word()
     elif category == "1":
         words_list = words_sheet.col_values(1)
@@ -345,7 +345,7 @@ def play_hangman(word):
         guess = input("Please guess a letter and hit enter:\n").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print(f"{Back.YELLOW+Style.BRIGHT}You already guessed the letter {guess}")
+                print(f"{Back.BLUE+Style.BRIGHT}You already guessed the letter {guess}")
             elif guess not in word:
                 print(f"{Fore.RED+Style.BRIGHT}{guess} is not in the word.")
                 tries -= 1 #decrement the number of tries
@@ -363,9 +363,9 @@ def play_hangman(word):
                 if "_" not in word_completion: 
                     guessed = True
         elif len(guess) > 1: #if user enters more than one letter at a time
-            print("Sorry, only 1 letter at a time is allowed!")
+            print(f"{Back.BLUE+Style.BRIGHT}Sorry, only 1 letter at a time is allowed!")
         else:
-            print("Not a valid guess. Only letters allowed!")
+            print(f"{Back.BLUE+Style.BRIGHT}Not a valid guess. Only letters allowed!")
         print(f"{Fore.CYAN+Style.BRIGHT}Number of tries {tries}")
         print("\n" + display_hangman(tries) + "\n")
         print(word_completion)
