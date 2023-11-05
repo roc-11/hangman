@@ -196,6 +196,7 @@ def main_menu():
         main_menu()
     elif menu_options == '1':
         word = get_rand_word()
+        name = welcome()
         play_hangman(word)
     elif menu_options == '2':
         show_instructions()
@@ -245,6 +246,8 @@ def welcome():
     """
     Welcome user to the game on start up.
     """
+    clear_terminal()
+
     print("______________________________\n")
     print(f"Loading category...")
     print(f"You have selected the category: {category_name}")
@@ -260,8 +263,6 @@ def welcome():
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, your name must be letters ONLY!")
             continue
         else:
-            print("______________________________\n")
-            print("Greetings " + name + "! Glad to have you playing today!\n")
             return name
 
 def get_rand_word():
@@ -271,6 +272,7 @@ def get_rand_word():
     """
     global category_name
     clear_terminal()
+
     print(GAME_LOGO)
     print("WELCOME TO HANGMAN!")
     print("______________________________\n")
@@ -327,8 +329,10 @@ def play_hangman(word):
     Function to play the game
     """
     clear_terminal()
+    
+    print("______________________________\n")
+    print("Greetings " + name + "! Glad to have you playing today!\n")
 
-    welcome()
     print("The word is " + word)
 
     word_completion = "_" * len(word) #length of chosen word
