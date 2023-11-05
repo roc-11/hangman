@@ -200,7 +200,10 @@ def main_menu():
         show_instructions()
     elif menu_options == '3':
         #clear the terminal and exit the game
-        print("exit game now")
+        print("______________________________\n")
+        print("Thanks for visiting! See you next time.")
+        print("Exiting game now...")
+        time.sleep(4) #delay exit for 3 seconds to show message
         clear_terminal()
         exit()
 
@@ -248,6 +251,7 @@ def welcome():
     global player_name
     print("______________________________\n")
     print(f"Loading category...")
+    time.sleep(2) #2 second delay
     print(f"You have selected the category: {category_name}")
     print("______________________________\n")
 
@@ -339,8 +343,6 @@ def play_hangman_again():
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, only Y or N is a valid response.")
             continue
             
-        
-
 def play_hangman(word):
     """
     Function to play the game
@@ -359,6 +361,7 @@ def play_hangman(word):
 
     print("Let's play Hangman!\n")
     print(f"Loading secret word from {category_name} category...")
+    time.sleep(2) #2 second delay
     print("\n" + display_hangman(tries))
     print(word_completion)
     print("\n")
