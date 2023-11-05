@@ -196,7 +196,7 @@ def main_menu():
         main_menu()
     elif menu_options == '1':
         word = get_rand_word()
-        name = welcome()
+        welcome()
         play_hangman(word)
     elif menu_options == '2':
         show_instructions()
@@ -247,23 +247,23 @@ def welcome():
     Welcome user to the game on start up.
     """
     clear_terminal()
-
+    global player_name
     print("______________________________\n")
     print(f"Loading category...")
     print(f"You have selected the category: {category_name}")
     print("______________________________\n")
 
     while True:
-        name = input("Please enter your preferred game name:\n")
+        player_name = input("Please enter your preferred game name:\n")
         #validate username
-        if len(name) == 0 or name == "":
+        if len(player_name) == 0 or player_name == "":
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, you must enter a username!")
             continue
-        elif not name.isalpha():
+        elif not player_name.isalpha():
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, your name must be letters ONLY!")
             continue
         else:
-            return name
+            return player_name
 
 def get_rand_word():
     """
@@ -331,9 +331,9 @@ def play_hangman(word):
     clear_terminal()
     
     print("______________________________\n")
-    print("Greetings " + name + "! Glad to have you playing today!\n")
+    print(f"Greetings {player_name}! Glad to have you playing today!\n")
 
-    print("The word is " + word)
+    #print("The word is " + word)
 
     word_completion = "_" * len(word) #length of chosen word
     guessed = False
@@ -378,10 +378,10 @@ def play_hangman(word):
     
     if guessed: #if guess is True, player wins
         print(f"{Fore.GREEN+Style.BRIGHT}{WIN_ART}")
-        print(f"{Back.GREEN}Congrats! You win!")
+        print(f"{Back.GREEN}Congrats {player_name}! You win!")
     else:
         print(f"{Fore.RED+Style.BRIGHT}{LOSE_ART}")
-        print(f"{Back.RED+Style.BRIGHT}Sorry you ran out of tries.")
+        print(f"{Back.RED+Style.BRIGHT}Sorry {player_name}, you ran out of tries.")
         print(f"\nThe word was {word}. Maybe next time.")
 
 def main():
