@@ -229,17 +229,14 @@ def show_instructions():
     print(RULES_ART)
     print(
         """
-        This is a classic game of Hangman.
-        Begin by pressing 1 on the main menu screen.
-        First, choose a word category. The computer will then generate a 
-        random mystery word from this category, with each letter shown as 
-        an underscore (e.g. _ _ _ _ ). 
+        This is a classic game of Hangman. Begin by pressing 1 on the main menu screen.
+        First, choose a word category. The computer will then generate a random mystery 
+        word from this category, with each letter shown as underscores (e.g. _ _ _ _ ). 
         The player must try to guess the word by typing one letter at a time.
         If the guess is correct, the letter will appear in the word.
         Each incorrect guess will cost you one of your 6 lives, and the 
-        Hangman will start to be hanged!
-        Once you run out of lives, the Hangman will die and you will lose
-        the game :(
+        Hangman will start to be hanged! Once you run out of lives, the Hangman will 
+        die and you will lose the game :(
         To win: guess the word before your lives reach ZERO. :)
         The fate of the Hangman lies in your hands!! GOOD LUCK!! 
         """
