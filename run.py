@@ -203,6 +203,7 @@ def main_menu():
         #clear the terminal and exit the game
         print("exit game now")
         clear_terminal()
+        exit()
 
 def show_instructions():
     """
