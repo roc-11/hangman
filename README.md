@@ -29,18 +29,30 @@ Hangman is a word guessing game where a player tries to reveal a hidden word by 
 
 Step by step version of how to play here
 
-## Planning Stage
+## UX
 
-### Aim
+### Planning Stage
+
+#### Aim
 The aim of this project is to build a Python-based Hangman game, which is fun and accessible to users, handles errors and is easy for users to navigate through the instructions. Users will play the game via a mock terminal on [Heroku](https://www.heroku.com/ "Link to Heroku hompepage").
 
-### Application Goals
+#### Application Goals
 * To provide users with a terminal-based game of Hangman which they can play.
 * To produce a Python-based Hangman game which both challenges and entertains users.
 * To create an environment and rules that are easily interpreted and accessible for users.
 * To implement error and exception handling to provide users with useful and informative feedback, and make for a better game experience.
 
-### User Goals
+#### User Goals/Stories
+
+New Users
+- As a new site user, I would like to ____________, so that I can ____________.
+- As a new site user, I would like to ____________, so that I can ____________.
+- As a new site user, I would like to ____________, so that I can ____________.
+
+Returning Users
+- As a returning site user, I would like to ____________, so that I can ____________.
+- As a returning site user, I would like to ____________, so that I can ____________.
+- As a returning site user, I would like to ____________, so that I can ____________.
 
 ## Features
 
@@ -55,13 +67,44 @@ The user has 3 options to choose from on this first screen:
 User input is needed to proceed. The user can select 1, 2 or 3 and hit enter to proceed. 
 The main_menu() function contains the code which deals with this initial screen. The list:
 
-        valid_menu_selection = ['1', '2', '3']
+'''
+    valid_menu_selection = ['1', '2', '3']
+'''
 
 is used to validate the user's selection. A selection entered outside of this list, e.g. 5 or "f", would result in an error message "INVALID CHOICE! Sorry, option not allowed." In this case, the user is again prompted to input a valid choice 1, 2, or 3. 
 
+![screenshot - Main Menu]()
+
 ### Play Hangman
 
+Selecting 1 from the main menu will begin the Hangman game. Three functions are run in this case:
+1. get_rand_word()
+2. welcome()
+3. play_hangman(word)
+
+The code will generate random word, show welcome, then play hangman. These will be further explained below. 
+
 #### Category Selection 
+
+The first part of playing the Hangman game involves a users being prompted to select a word category. There are 7 categories to choose from for this Hangman game. These are Countries, Sports, Zoo Animals, Fruit, Capital Cities (Europe), Harry Potter and Pokémon. 
+
+In order to ensure a valid category is selected, there is a list: 
+
+'''
+    valid_category = ["1", "2", "3", "4", "5", "6", "7"]
+'''
+
+A while loop runs which prompts the user to select a category from the above list, input it and press enter. This input is stored as '''category'''. The while loop checks the value stored in '''category'''. If a valid number from the '''valid_category''' list is entered, the '''words_list''' variable is changed accordingly. There is a column for each category in '''words_list''' stored in the "words" sheet in Google Sheets Spreadsheets (LINK). Once a valid option is chosen, the loop is exited in order to proceed to generating a random word. 
+
+There is a defence included in case of an incorrect or invalid entry from the user. Anything entered which is not in the '''valid_category''' list will result in an error message in blue text appearing. The user will be again prompted to input a valid category selection. 
+
+'''
+elif category not in valid_category:
+            print(f"{color_blue}Sorry, that is not a valid selection.")
+            print(f"{color_blue}Only number 1 - 7 allowed.")
+            time.sleep(2)  # delay message
+            continue
+'''
 
 #### Input Username
 

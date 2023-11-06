@@ -271,7 +271,7 @@ def welcome():
     clear_terminal()
     global player_name
     print(f"Loading category...\n")
-    time.sleep(2)  #2 second delay
+    time.sleep(2)  # 2 second delay
     print(f"You have selected the category: {category_name} \n")
     print("______________________________\n")
 
@@ -298,7 +298,7 @@ def get_rand_word():
 
     print(GAME_LOGO)
     print("WELCOME TO HANGMAN!")
-    print("______________________________\n") 
+    print("______________________________\n")
     print("CATEGORIES...\n")
     time.sleep(1.5)
     print("1. Countries")
@@ -307,13 +307,13 @@ def get_rand_word():
     print("4. Fruit")
     print("5. Capital Cities (Europe)")
     print("6. Harry Potter")
-    print("7. Pokémon")
+    print("7. Pokémon\n")
 
     valid_category = ["1", "2", "3", "4", "5", "6", "7"]
     words_sheet = SHEET.worksheet('words')
     # check category selection is valid
     while True:
-        category = input("\nPlease select a category from the choices above: \n")
+        category = input("Please select a category from the choices above: \n")
 
         if category == "1":
             words_list = words_sheet.col_values(1)
@@ -354,8 +354,8 @@ def get_rand_word():
 
     # return random word as string, remove non-alphanumeric characters
     word_to_string = str(random_word).upper()
-    word_remove_non_alpha = filter(str.isalpha,word_to_string)
-    word="".join(word_remove_non_alpha)
+    word_remove_non_alpha = filter(str.isalpha, word_to_string)
+    word = "".join(word_remove_non_alpha)
 
     return word
 
@@ -366,13 +366,13 @@ def play_hangman_again():
     Validate yes/no selection.
     """
     while True:
-        play_again_choice = input("Would you like to play Hangman again? Enter Y or N: \n")
-         
-        if play_again_choice.upper() == "Y":
+        play_again = input("Would you like to play Hangman again? Y or N: \n")
+
+        if play_again.upper() == "Y":
             clear_terminal()
             word = get_rand_word()
             play_hangman(word)
-        elif play_again_choice.upper() == "N":
+        elif play_again.upper() == "N":
             main_menu()
         else:
             print(f"{color_blue}Sorry, only Y or N is a valid response.")
@@ -420,7 +420,8 @@ def play_hangman(word):
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
                     word_as_list[index] = guess
-                word_completion = "".join(word_as_list)  # convert back to a string
+                # convert back to a string
+                word_completion = "".join(word_as_list)
 
                 # possible the guess now completes the word
                 if "_" not in word_completion:
