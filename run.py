@@ -295,7 +295,6 @@ def get_rand_word():
     print("5. Capital Cities (Europe)")
     print("6. Harry Potter")
     print("7. Pokémon")
-    category = input("\nPlease select a category from the choices above: \n")
 
     valid_category = ["1", "2", "3", "4", "5", "6", "7"]
     words_sheet = SHEET.worksheet('words')
@@ -306,34 +305,36 @@ def get_rand_word():
         if category == "1":
             words_list = words_sheet.col_values(1)
             category_name = "Countries"
+            break
         elif category == "2":
             words_list = words_sheet.col_values(2)
             category_name = "Sports"
+            break
         elif category == "3":
             words_list = words_sheet.col_values(3)
             category_name = "Zoo Animals"
+            break
         elif category == "4":
             words_list = words_sheet.col_values(4)
             category_name = "Fruit"
+            break
         elif category == "5":
             words_list = words_sheet.col_values(5)
             category_name = "Capital Cities (Europe)"
+            break
         elif category == "6":
             words_list = words_sheet.col_values(6)
             category_name = "Harry Potter"
+            break
         elif category == "7":
             words_list = words_sheet.col_values(7)
             category_name = "Pokémon"
+            break
         elif category not in valid_category:
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, that is not a valid selection.")
-            time.sleep(3)  # delay message
-            clear_terminal()
-            get_rand_word()
-        else:
-            print(f"{Back.BLUE+Style.BRIGHT}Sorry, only numbers 1-7 are allowed.")
-            time.sleep(3)  # delay message
-            clear_terminal()
-            get_rand_word()
+            print(f"{Back.BLUE+Style.BRIGHT}Only number 1 - 7 allowed.")
+            time.sleep(2)  # delay message
+            continue
 
     # words_list = words_sheet.get_all_values()
     random_word = random.choice(words_list)
@@ -352,7 +353,7 @@ def play_hangman_again():
     """
     while True:
         play_again_choice = input("Would you like to play Hangman again? Enter Y or N: \n")
-        clear_terminal()  # clear screen 
+         
         if play_again_choice.upper() == "Y":
             clear_terminal()
             word = get_rand_word()
