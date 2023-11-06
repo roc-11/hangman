@@ -81,6 +81,16 @@ MENU_ART = '''
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░By Róisín O'Connell░░░░░░
 '''
 
+WINNER_ART = '''
+                           __________   ▄▄▄▄▄▄
+                          | I'M FREE! |  |   █
+                           ¯¯¯¯¯¯¯¯¯¯\\  °    █            ▒▒▒▒▒▒▒▒
+               █▄██▄█                  \\O/   █           ▒▒▌▒▒▐▒▒▌▒
+      █▄█▄█▄█▄█▐█┼██▌█▄█▄█▄█▄█          |    █            ▒▀▄▒▌▄▀▒
+      ███┼█████▐████▌█████┼███         / \\   █               ██
+░░░░░░█████████▐████▌█████████░░░░░░████████████░░░░░░░░░░░░░██░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░! NOT HANGED  !░░░░░░
+'''
 
 def display_hangman(tries):
     stages = [  # 6 final state: head, torso, both arms, and both legs
@@ -437,12 +447,16 @@ def play_hangman(word):
         print("\n")
 
     if guessed:  # if guess is True, player wins
+        clear_terminal()
         print(f"{color_green}{WIN_ART}")
+        print(WINNER_ART)
         print(f"{color_green}Congrats {player_name}! You win! :) ")
         print(f"{color_green}Woohoo...you saved the Hangman by guessing the word {word}!")
         play_hangman_again()
     else:
+        clear_terminal()
         print(f"{color_red}{LOSE_ART}")
+        print(display_hangman(tries))
         print(f"{color_red}Oh no! The Hangman has been hanged! :( ")
         print(f"{color_red}Sorry {player_name}, you ran out of tries.")
         print(f"\nThe word was {word}. Maybe next time.")
