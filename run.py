@@ -258,7 +258,6 @@ def welcome():
     """
     clear_terminal()
     global player_name
-    print("______________________________\n")
     print(f"Loading category...\n")
     time.sleep(2)  #2 second delay
     print(f"You have selected the category: {category_name} \n")
@@ -365,6 +364,7 @@ def play_hangman(word):
     # print("The word is " + word) CHECK FOR TESTING
 
     word_completion = "_" * len(word)  # length of chosen word
+    word_length = len(word)
     guessed = False
     guessed_letters = []
     tries = 6
@@ -373,6 +373,7 @@ def play_hangman(word):
     print(f"Loading secret word from {category_name} category...")
     time.sleep(2)  # 2 second delay
     print("\n" + display_hangman(tries))
+    print(f"{Fore.MAGENTA+Style.BRIGHT}The word has {word_length} letters")
     print(word_completion)
     print("\n")
 
@@ -403,6 +404,7 @@ def play_hangman(word):
         else:
             print(f"{Back.BLUE+Style.BRIGHT}Not a valid guess. Only letters allowed!")
         print(f"{Fore.CYAN+Style.BRIGHT}Number of tries remaining: {tries}")
+        print(f"{Fore.MAGENTA+Style.BRIGHT}The word has {word_length} letters")
         print("\n" + display_hangman(tries) + "\n")
         print(word_completion)
         print("\n")
