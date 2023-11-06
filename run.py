@@ -46,7 +46,6 @@ RULES_ART = """
     """
 
 WIN_ART = """
-      
     ░██╗░░░░░░░██╗██╗███╗░░██╗███╗░░██╗███████╗██████╗░
     ░██║░░██╗░░██║██║████╗░██║████╗░██║██╔════╝██╔══██╗
     ░╚██╗████╗██╔╝██║██╔██╗██║██╔██╗██║█████╗░░██████╔╝
@@ -56,7 +55,6 @@ WIN_ART = """
     """
 
 LOSE_ART = """
-    
     ░██████╗░░█████╗░███╗░░░███╗███████╗  ░█████╗░██╗░░░██╗███████╗██████╗░
     ██╔════╝░██╔══██╗████╗░████║██╔════╝  ██╔══██╗██║░░░██║██╔════╝██╔══██╗
     ██║░░██╗░███████║██╔████╔██║█████╗░░  ██║░░██║╚██╗░██╔╝█████╗░░██████╔╝
@@ -346,6 +344,7 @@ def play_hangman_again():
     """
     while True:
         play_again_choice = input("Would you like to play Hangman again? Enter Y or N: \n")
+        clear_terminal() #clear screen 
         if play_again_choice.upper() == "Y":
             clear_terminal()
             word = get_rand_word()
@@ -381,6 +380,7 @@ def play_hangman(word):
 
     while not guessed and tries > 0:
         guess = input("Please guess a letter and hit enter:\n").upper()
+        clear_terminal() #clear terminal before providing feedback
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print(f"{Back.BLUE+Style.BRIGHT}You already guessed the letter {guess}")
@@ -404,7 +404,7 @@ def play_hangman(word):
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, only 1 letter at a time is allowed!")
         else:
             print(f"{Back.BLUE+Style.BRIGHT}Not a valid guess. Only letters allowed!")
-        print(f"{Fore.CYAN+Style.BRIGHT}Number of tries {tries}")
+        print(f"{Fore.CYAN+Style.BRIGHT}Number of tries remaining: {tries}")
         print("\n" + display_hangman(tries) + "\n")
         print(word_completion)
         print("\n")
