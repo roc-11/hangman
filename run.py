@@ -8,7 +8,7 @@ import random
 import re #regular expression library
 from colorama import Fore, Back, Style, init
 from os import system, name # import only system from os
-import time 
+import time
 
 #Initialize colorama, autoreset after each use of Colorama
 init(autoreset=True)
@@ -35,14 +35,14 @@ GAME_LOGO = """
     """
 
 RULES_ART = """
-     _______           _        _______  _______ 
-    (  ____ )|\     /|( \      (  ____ \(  ____ /
-    | (    )|| )   ( || (      | (    \/| (    \/
-    | (____)|| |   | || |      | (__    | (_____ 
+     _______           _        _______  _______
+    (  ____ )|\\     /|( \\      (  ____ \\(  ____ /
+    | (    )|| )   ( || (      | (    \\/| (    \\/
+    | (____)|| |   | || |      | (__    | (_____
     |     __)| |   | || |      |  __)   (_____  )
-    | (\ (   | |   | || |      | (            ) |
-    | ) \ \__| (___) || (____/\| (____/\/\____) |
-    |/   \__/(_______)(_______/(_______/\_______)
+    | (\\ (   | |   | || |      | (            ) |
+    | ) \\ \\__| (___) || (____/\\| (____/\\/\\____) |
+    |/   \\__/(_______)(_______/(_______/\\_______)
     """
 
 WIN_ART = """
@@ -61,7 +61,7 @@ LOSE_ART = """
     ██║░░╚██╗██╔══██║██║╚██╔╝██║██╔══╝░░  ██║░░██║░╚████╔╝░██╔══╝░░██╔══██╗
     ╚██████╔╝██║░░██║██║░╚═╝░██║███████╗  ╚█████╔╝░░╚██╔╝░░███████╗██║░░██║
     ░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝  ░╚════╝░░░░╚═╝░░░╚══════╝╚═╝░░╚═╝
-    """                                                                           
+    """
 
 MENU_ART = '''
                            __________   ▄▄▄▄▄▄
@@ -192,12 +192,11 @@ def main_menu():
     print("Type 2: For game rules")
     print("Type 3: To exit")
     print("______________________________\n")
-    
     menu_options = input("Please choose an option 1, 2 or 3 and press Enter:\n")
     valid_menu_selection = ['1', '2', '3']
 
     #check user input is valid
-    if menu_options not in valid_menu_selection: 
+    if menu_options not in valid_menu_selection:
         print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
         print(Back.BLUE + "Please choose option 1, 2 or 3.")
         time.sleep(3)
@@ -231,17 +230,17 @@ def show_instructions():
     """
     This is a classic game of Hangman.
     Begin by pressing 1 on the main menu screen.
-    First, choose a word category. The computer will then generate a 
-    random mystery word from this category, with each letter shown as 
-    an underscore (e.g. _ _ _ _ ). 
+    First, choose a word category. The computer will then generate a
+    random mystery word from this category, with each letter shown as
+    an underscore (e.g. _ _ _ _ ).
     The player must try to guess the word by typing one letter at a time.
     If the guess is correct, the letter will appear in the word.
-    Each incorrect guess will cost you one of your 6 lives, and the 
+    Each incorrect guess will cost you one of your 6 lives, and the
     Hangman will start to be hanged!
     Once you run out of lives, the Hangman will die and you will lose
     the game :(
     To win: guess the word before your lives reach ZERO. :)
-    The fate of the Hangman lies in your hands!! GOOD LUCK!! 
+    The fate of the Hangman lies in your hands!! GOOD LUCK!!
     """
     )
     # check if enter button clicked, else display error message
@@ -287,8 +286,7 @@ def get_rand_word():
 
     print(GAME_LOGO)
     print("WELCOME TO HANGMAN!")
-    print("______________________________\n")
-    
+    print("______________________________\n") 
     print("CATEGORIES...\n")
     time.sleep(1.5)
     print("1. Countries")
@@ -354,13 +352,13 @@ def play_hangman_again():
         else:
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, only Y or N is a valid response.")
             continue
-            
+         
 def play_hangman(word):
     """
     Function to play the game
     """
     clear_terminal()
-    
+
     print("______________________________\n")
     print(f"Greetings {player_name}! Glad to have you playing today!\n")
 
@@ -398,7 +396,7 @@ def play_hangman(word):
                 word_completion = "".join(word_as_list) #convert back to a string
 
                 #possible the guess now completes the word
-                if "_" not in word_completion: 
+                if "_" not in word_completion:
                     guessed = True
         elif len(guess) > 1: #if user enters more than one letter at a time
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, only 1 letter at a time is allowed!")
@@ -408,7 +406,7 @@ def play_hangman(word):
         print("\n" + display_hangman(tries) + "\n")
         print(word_completion)
         print("\n")
-    
+
     if guessed: #if guess is True, player wins
         print(f"{Fore.GREEN+Style.BRIGHT}{WIN_ART}")
         print(f"{Fore.GREEN}Congrats {player_name}! You win! :) ")
