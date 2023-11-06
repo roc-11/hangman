@@ -276,7 +276,7 @@ def welcome():
     print("______________________________\n")
 
     while True:
-        player_name = input("Please enter your preferred game name:\n")
+        player_name = input("Please enter your preferred user name:\n")
         # validate username
         if len(player_name) == 0 or player_name == "":
             print(f"{color_blue}Sorry, you must enter a username!")

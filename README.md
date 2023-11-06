@@ -54,6 +54,10 @@ Returning Users
 - As a returning site user, I would like to ____________, so that I can ____________.
 - As a returning site user, I would like to ____________, so that I can ____________.
 
+### User Feedback
+
+### Flow Chart
+
 ## Features
 
 ### Main Menu
@@ -84,7 +88,7 @@ Selecting 1 from the main menu will begin the Hangman game. Three functions are 
 
 The code will generate random word, show welcome, then play hangman. These will be further explained below. 
 
-#### Category Selection 
+#### Category Selection & Generate Random, Mystery Word
 
 The first part of playing the Hangman game involves a users being prompted to select a word category. There are 7 categories to choose from for this Hangman game. These are Countries, Sports, Zoo Animals, Fruit, Capital Cities (Europe), Harry Potter and Pokémon. 
 
@@ -96,19 +100,58 @@ In order to ensure a valid category is selected, there is a list:
 
 A while loop runs which prompts the user to select a category from the above list, input it and press enter. This input is stored as '''category'''. The while loop checks the value stored in '''category'''. If a valid number from the '''valid_category''' list is entered, the '''words_list''' variable is changed accordingly. There is a column for each category in '''words_list''' stored in the "words" sheet in Google Sheets Spreadsheets (LINK). Once a valid option is chosen, the loop is exited in order to proceed to generating a random word. 
 
+The Python random (LINK) library is used to generate a random choice from the '''words_list'''. This random word is assigned to the variable '''random_word'''. The random word is then converted to a string with '''str()''' and made uppercase with '''.upper()'''. Finally, non-aphanumeric characters are removed from the random word string. (SEE BUGS FOR MORE DETAILS ON THIS)
+
+'''
+# return random word as string, remove non-alphanumeric characters
+    word_to_string = str(random_word).upper()
+    word_remove_non_alpha = filter(str.isalpha,word_to_string)
+    word="".join(word_remove_non_alpha)
+
+    return word
+'''
+
 There is a defence included in case of an incorrect or invalid entry from the user. Anything entered which is not in the '''valid_category''' list will result in an error message in blue text appearing. The user will be again prompted to input a valid category selection. 
 
 '''
 elif category not in valid_category:
-            print(f"{color_blue}Sorry, that is not a valid selection.")
-            print(f"{color_blue}Only number 1 - 7 allowed.")
-            time.sleep(2)  # delay message
-            continue
+    print(f"{color_blue}Sorry, that is not a valid selection.")
+    print(f"{color_blue}Only number 1 - 7 allowed.")
+    time.sleep(2)  # delay message
+    continue
 '''
+
+![screenshot - Category Selection]()
 
 #### Input Username
 
-#### Generate Random, Mystery Word
+After a valid category is selected, the screen is cleared and there is a loading message, to delay all information appearing to the user at once. The time library (LINK) is imported at the top of the run.py file so that the '''sleep()''' function can be used throughout the game to delay/pause user feedback. 
+
+The category the user selected is clarified. The user is then prompted to input their username. The reason for this is twofold:
+* to provide a more personalised user experience (e.g. Congrats Colin!).
+* initial plans included being able to save scores to Google Sheets. This turned out to be beyond the scope of this project.
+
+The username prompt runs in a '''while True:''' loop. The '''player_name''' is returned and stored in the global variable '''player_name''' upon entering a valid username. 
+
+Validation code is included here to prevent users entering 0 or an empty string. 
+'''
+# validate username
+if len(player_name) == 0 or player_name == "":
+    print(f"{color_blue}Sorry, you must enter a username!")
+    continue
+'''
+There is additional validation code to catch the error of a user entering a username which is non-alphabetic. 
+'''
+elif not player_name.isalpha():
+    print(f"{color_blue}Sorry, your name must be letters ONLY!")
+    continue
+'''
+
+The while loop runs until a valid username is entered and the user hits enter. 
+
+![screenshot - Username]()
+
+#### Hangman Game Play Screen
 
 #### Winner Screen
 
