@@ -419,10 +419,16 @@ def play_hangman(word):
         print(f"\nThe word was {word}. Maybe next time.")
         play_hangman_again()
 
-def main():
+#def main():
+   # """
+   # Run all program functions
+   # """
+   # main_menu()
+
+#main()
+
+if __name__ == "__main__":
     """
-    Run all program functions
+    Start the game by calling the main function.
     """
     main_menu()
-
-main()
