@@ -5,9 +5,9 @@ Hangman - A Python terminal game by Roisin O'Connell.
 import gspread
 from google.oauth2.service_account import Credentials
 import random
-import re #regular expression library
+import re  # regular expression library
 from colorama import Fore, Back, Style, init
-from os import system, name # import only system from os
+from os import system, name  # import only system from os
 import time
 
 #Initialize colorama, autoreset after each use of Colorama
@@ -75,7 +75,7 @@ MENU_ART = '''
 '''
 
 def display_hangman(tries):
-    stages = [# 6 final state: head, torso, both arms, and both legs
+    stages = [  # 6 final state: head, torso, both arms, and both legs
         '''
                         _______________   ▄▄▄▄▄▄
                         | OUCH MY NECK! |  |    █
@@ -170,11 +170,11 @@ def clear_terminal():
     Clears the terminal. Code from:
     https://www.geeksforgeeks.org/clear-screen-python/
     """
-    # for windows
+    #  for windows
     if name == 'nt':
         _ = system('cls')
- 
-    # for mac and linux(here, os.name is 'posix')
+
+    #  for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')
 
@@ -195,7 +195,7 @@ def main_menu():
     menu_options = input("Please choose an option 1, 2 or 3 and press Enter:\n")
     valid_menu_selection = ['1', '2', '3']
 
-    #check user input is valid
+    # check user input is valid
     if menu_options not in valid_menu_selection:
         print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
         print(Back.BLUE + "Please choose option 1, 2 or 3.")
@@ -209,11 +209,11 @@ def main_menu():
     elif menu_options == '2':
         show_instructions()
     elif menu_options == '3':
-        #clear the terminal and exit the game
+        # clear the terminal and exit the game
         print("______________________________\n")
         print("Thanks for visiting! See you next time.")
         print("Exiting game now...")
-        time.sleep(4) #delay exit for 3 seconds to show message
+        time.sleep(4)  # delay exit for 3 seconds to show message
         clear_terminal()
         exit()
 
@@ -260,13 +260,13 @@ def welcome():
     global player_name
     print("______________________________\n")
     print(f"Loading category...\n")
-    time.sleep(2) #2 second delay
+    time.sleep(2)  #2 second delay
     print(f"You have selected the category: {category_name} \n")
     print("______________________________\n")
 
     while True:
         player_name = input("Please enter your preferred game name:\n")
-        #validate username
+        # validate username
         if len(player_name) == 0 or player_name == "":
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, you must enter a username!")
             continue
@@ -300,7 +300,7 @@ def get_rand_word():
 
     valid_category = ["1", "2", "3", "4", "5", "6", "7"]
     words_sheet = SHEET.worksheet('words')
-    #check category selection is valid
+    # check category selection is valid
     if category not in valid_category:
         print(f"{Back.BLUE+Style.BRIGHT}Sorry, that is not a valid selection.")
         get_rand_word()
@@ -325,10 +325,10 @@ def get_rand_word():
     elif category == "7":
         words_list = words_sheet.col_values(7)
         category_name = "Pokémon"
-    #words_list = words_sheet.get_all_values()
+    # words_list = words_sheet.get_all_values()
     random_word = random.choice(words_list)
 
-    #return random word as string, remove non-alphanumeric characters
+    # return random word as string, remove non-alphanumeric characters
     word_to_string = str(random_word).upper()
     word_remove_non_alpha = filter(str.isalpha,word_to_string)
     word="".join(word_remove_non_alpha)
@@ -342,7 +342,7 @@ def play_hangman_again():
     """
     while True:
         play_again_choice = input("Would you like to play Hangman again? Enter Y or N: \n")
-        clear_terminal() #clear screen 
+        clear_terminal()  # clear screen 
         if play_again_choice.upper() == "Y":
             clear_terminal()
             word = get_rand_word()
@@ -362,29 +362,29 @@ def play_hangman(word):
     print("______________________________\n")
     print(f"Greetings {player_name}! Glad to have you playing today!\n")
 
-    #print("The word is " + word) CHECK FOR TESTING
+    # print("The word is " + word) CHECK FOR TESTING
 
-    word_completion = "_" * len(word) #length of chosen word
+    word_completion = "_" * len(word)  # length of chosen word
     guessed = False
     guessed_letters = []
     tries = 6
 
     print("Let's play Hangman!\n")
     print(f"Loading secret word from {category_name} category...")
-    time.sleep(2) #2 second delay
+    time.sleep(2)  # 2 second delay
     print("\n" + display_hangman(tries))
     print(word_completion)
     print("\n")
 
     while not guessed and tries > 0:
         guess = input("Please guess a letter and hit enter:\n").upper()
-        clear_terminal() #clear terminal before providing feedback
+        clear_terminal()  # clear terminal before providing feedback
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print(f"{Back.BLUE+Style.BRIGHT}You already guessed the letter {guess}")
             elif guess not in word:
                 print(f"{Fore.RED+Style.BRIGHT}{guess} is not in the word.")
-                tries -= 1 #decrement the number of tries
+                tries -= 1  # decrement the number of tries
                 guessed_letters.append(guess)
             else:
                 print(f"{Fore.GREEN+Style.BRIGHT}Well done! {guess} is in the word!")
@@ -393,12 +393,12 @@ def play_hangman(word):
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
                     word_as_list[index] = guess
-                word_completion = "".join(word_as_list) #convert back to a string
+                word_completion = "".join(word_as_list)  # convert back to a string
 
-                #possible the guess now completes the word
+                # possible the guess now completes the word
                 if "_" not in word_completion:
                     guessed = True
-        elif len(guess) > 1: #if user enters more than one letter at a time
+        elif len(guess) > 1:  # if user enters more than one letter at a time
             print(f"{Back.BLUE+Style.BRIGHT}Sorry, only 1 letter at a time is allowed!")
         else:
             print(f"{Back.BLUE+Style.BRIGHT}Not a valid guess. Only letters allowed!")
@@ -407,7 +407,7 @@ def play_hangman(word):
         print(word_completion)
         print("\n")
 
-    if guessed: #if guess is True, player wins
+    if guessed:  # if guess is True, player wins
         print(f"{Fore.GREEN+Style.BRIGHT}{WIN_ART}")
         print(f"{Fore.GREEN}Congrats {player_name}! You win! :) ")
         print(f"{Fore.GREEN}Woohoo...you saved the Hangman by guessing the word {word}!")
