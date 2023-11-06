@@ -10,10 +10,10 @@ from colorama import Fore, Back, Style, init
 from os import system, name  # import only system from os
 import time
 
-#Initialize colorama, autoreset after each use of Colorama
+# Initialize colorama, autoreset after each use of Colorama
 init(autoreset=True)
 
-#Google Sheet set up
+# Google Sheet set up
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -24,6 +24,13 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSREAD_CLIENT.open('hangman')
+
+# Colorama colors user feedback
+color_blue = Back.BLUE
+color_red = Fore.RED+Style.BRIGHT
+color_green = Fore.GREEN+Style.BRIGHT
+color_cyan = Fore.CYAN+Style.BRIGHT
+color_magenta = Fore.MAGENTA+Style.BRIGHT
 
 GAME_LOGO = """
     ██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗
@@ -73,6 +80,7 @@ MENU_ART = '''
 ░░░░░░█████████▐████▌█████████░░░░░░████████████░░░░░░░░░░░░░██░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░By Róisín O'Connell░░░░░░
 '''
+
 
 def display_hangman(tries):
     stages = [  # 6 final state: head, torso, both arms, and both legs
@@ -155,6 +163,7 @@ def display_hangman(tries):
     ]
     return stages[tries]
 
+
 class Score():
     """
     A class to deal with scores in the Hangman game.
@@ -164,6 +173,7 @@ class Score():
         """ Initializes the Hangman score """
         self.player = player
         self.wins = wins
+
 
 def clear_terminal():
     """
@@ -177,6 +187,7 @@ def clear_terminal():
     #  for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')
+
 
 def main_menu():
     """
@@ -192,23 +203,23 @@ def main_menu():
     print("Type 2: For game rules")
     print("Type 3: To exit")
     print("______________________________\n")
-    menu_options = input("Please choose an option 1, 2 or 3 and press Enter:\n")
+    menu_option = input("Please choose an option 1, 2 or 3 and press Enter:\n")
     valid_menu_selection = ['1', '2', '3']
 
     # check user input is valid
-    if menu_options not in valid_menu_selection:
-        print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
-        print(Back.BLUE + "Please choose option 1, 2 or 3.")
+    if menu_option not in valid_menu_selection:
+        print(color_blue + "INVALID CHOICE! Sorry, option not allowed.")
+        print(color_blue + "Please choose option 1, 2 or 3.")
         time.sleep(3)
         main_menu()
-    elif menu_options == '1':
+    elif menu_option == '1':
         # generate random word, show welcome, then play hangman
         word = get_rand_word()
         welcome()
         play_hangman(word)
-    elif menu_options == '2':
+    elif menu_option == '2':
         show_instructions()
-    elif menu_options == '3':
+    elif menu_option == '3':
         # clear the terminal and exit the game
         print("______________________________\n")
         print("Thanks for visiting! See you next time.")
@@ -216,6 +227,7 @@ def main_menu():
         time.sleep(4)  # delay exit for 3 seconds to show message
         clear_terminal()
         exit()
+
 
 def show_instructions():
     """
@@ -226,8 +238,7 @@ def show_instructions():
     clear_terminal()
 
     print(RULES_ART)
-    print(
-    """
+    print("""
     This is a classic game of Hangman.
     Begin by pressing 1 on the main menu screen.
     First, choose a word category. The computer will then generate a
@@ -241,16 +252,17 @@ def show_instructions():
     the game :(
     To win: guess the word before your lives reach ZERO. :)
     The fate of the Hangman lies in your hands!! GOOD LUCK!!
-    """
-    )
+    """)
+
     # check if enter button clicked, else display error message
     while True:
-        return_to_menu = input("Please press Enter to return to the main menu. \n")
+        return_to_menu = input("Press Enter to return to the main menu. \n")
         if return_to_menu == "":
             main_menu()
             break
         else:
-            print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
+            print(color_blue + "INVALID CHOICE! Sorry, option not allowed.")
+
 
 def welcome():
     """
@@ -267,13 +279,14 @@ def welcome():
         player_name = input("Please enter your preferred game name:\n")
         # validate username
         if len(player_name) == 0 or player_name == "":
-            print(f"{Back.BLUE+Style.BRIGHT}Sorry, you must enter a username!")
+            print(f"{color_blue}Sorry, you must enter a username!")
             continue
         elif not player_name.isalpha():
-            print(f"{Back.BLUE+Style.BRIGHT}Sorry, your name must be letters ONLY!")
+            print(f"{color_blue}Sorry, your name must be letters ONLY!")
             continue
         else:
             return player_name
+
 
 def get_rand_word():
     """
@@ -331,8 +344,8 @@ def get_rand_word():
             category_name = "Pokémon"
             break
         elif category not in valid_category:
-            print(f"{Back.BLUE+Style.BRIGHT}Sorry, that is not a valid selection.")
-            print(f"{Back.BLUE+Style.BRIGHT}Only number 1 - 7 allowed.")
+            print(f"{color_blue}Sorry, that is not a valid selection.")
+            print(f"{color_blue}Only number 1 - 7 allowed.")
             time.sleep(2)  # delay message
             continue
 
@@ -345,6 +358,7 @@ def get_rand_word():
     word="".join(word_remove_non_alpha)
 
     return word
+
 
 def play_hangman_again():
     """
@@ -361,9 +375,10 @@ def play_hangman_again():
         elif play_again_choice.upper() == "N":
             main_menu()
         else:
-            print(f"{Back.BLUE+Style.BRIGHT}Sorry, only Y or N is a valid response.")
+            print(f"{color_blue}Sorry, only Y or N is a valid response.")
             continue
-         
+
+
 def play_hangman(word):
     """
     Function to play the game
@@ -393,13 +408,13 @@ def play_hangman(word):
         clear_terminal()  # clear terminal before providing feedback
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print(f"{Back.BLUE+Style.BRIGHT}You already guessed the letter {guess}")
+                print(f"{color_blue}You already guessed the letter {guess}")
             elif guess not in word:
-                print(f"{Fore.RED+Style.BRIGHT}{guess} is not in the word.")
+                print(f"{color_red}{guess} is not in the word.")
                 tries -= 1  # decrement the number of tries
                 guessed_letters.append(guess)
             else:
-                print(f"{Fore.GREEN+Style.BRIGHT}Well done! {guess} is in the word!")
+                print(f"{color_green}Well done! {guess} is in the word!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -411,34 +426,27 @@ def play_hangman(word):
                 if "_" not in word_completion:
                     guessed = True
         elif len(guess) > 1:  # if user enters more than one letter at a time
-            print(f"{Back.BLUE+Style.BRIGHT}Sorry, only 1 letter at a time is allowed!")
+            print(f"{color_blue}Sorry, only 1 letter at a time is allowed!")
         else:
-            print(f"{Back.BLUE+Style.BRIGHT}Not a valid guess. Only letters allowed!")
-        print(f"{Fore.CYAN+Style.BRIGHT}Number of tries remaining: {tries}")
-        print(f"{Fore.MAGENTA+Style.BRIGHT}The word has {word_length} letters")
+            print(f"{color_blue}Not a valid guess. Only letters allowed!")
+        print(f"{color_cyan}Number of tries remaining: {tries}")
+        print(f"{color_magenta}The word has {word_length} letters")
         print("\n" + display_hangman(tries) + "\n")
         print(word_completion)
         print("\n")
 
     if guessed:  # if guess is True, player wins
-        print(f"{Fore.GREEN+Style.BRIGHT}{WIN_ART}")
-        print(f"{Fore.GREEN}Congrats {player_name}! You win! :) ")
-        print(f"{Fore.GREEN}Woohoo...you saved the Hangman by guessing the word {word}!")
+        print(f"{color_green}{WIN_ART}")
+        print(f"{color_green}Congrats {player_name}! You win! :) ")
+        print(f"{color_green}Woohoo...you saved the Hangman by guessing the word {word}!")
         play_hangman_again()
     else:
-        print(f"{Fore.RED+Style.BRIGHT}{LOSE_ART}")
-        print(f"{Fore.RED+Style.BRIGHT}Oh no! The Hangman has been hanged! :( ")
-        print(f"{Fore.RED+Style.BRIGHT}Sorry {player_name}, you ran out of tries.")
+        print(f"{color_red}{LOSE_ART}")
+        print(f"{color_red}Oh no! The Hangman has been hanged! :( ")
+        print(f"{color_red}Sorry {player_name}, you ran out of tries.")
         print(f"\nThe word was {word}. Maybe next time.")
         play_hangman_again()
 
-#def main():
-   # """
-   # Run all program functions
-   # """
-   # main_menu()
-
-#main()
 
 if __name__ == "__main__":
     """
