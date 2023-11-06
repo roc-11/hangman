@@ -5,7 +5,7 @@ Hangman - A Python terminal game by Roisin O'Connell.
 import gspread
 from google.oauth2.service_account import Credentials
 import random
-import re
+import re #regular expression library
 from colorama import Fore, Back, Style, init
 from os import system, name # import only system from os
 import time 
@@ -66,9 +66,8 @@ LOSE_ART = """
     """                                                                           
 
 MENU_ART = '''
-
                            __________   ▄▄▄▄▄▄
-                          | HELP ME! |  |    █
+                          | SAVE ME! |  |    █
                            ¯¯¯¯¯¯¯¯¯¯\\  °    █            ▒▒▒▒▒▒▒▒
                █▄██▄█                  \\O/   █           ▒▒▌▒▒▐▒▒▌▒
       █▄█▄█▄█▄█▐█┼██▌█▄█▄█▄█▄█          |    █            ▒▀▄▒▌▄▀▒
@@ -199,12 +198,14 @@ def main_menu():
     menu_options = input("Please choose an option 1, 2 or 3 and press Enter:\n")
     valid_menu_selection = ['1', '2', '3']
 
-    if menu_options not in valid_menu_selection: #check user input is valid
+    #check user input is valid
+    if menu_options not in valid_menu_selection: 
         print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
         print(Back.BLUE + "Please choose option 1, 2 or 3.")
         time.sleep(3)
         main_menu()
     elif menu_options == '1':
+        # generate random word, show welcome, then play hangman
         word = get_rand_word()
         welcome()
         play_hangman(word)
@@ -245,7 +246,7 @@ def show_instructions():
     The fate of the Hangman lies in your hands!! GOOD LUCK!! 
     """
     )
-
+    # check if enter button clicked, else display error message
     while True:
         return_to_menu = input("Please press Enter to return to the main menu. \n")
         if return_to_menu == "":
@@ -253,7 +254,6 @@ def show_instructions():
             break
         else:
             print(Back.BLUE + "INVALID CHOICE! Sorry, option not allowed.")
-
 
 def welcome():
     """
@@ -365,7 +365,7 @@ def play_hangman(word):
     print("______________________________\n")
     print(f"Greetings {player_name}! Glad to have you playing today!\n")
 
-    #print("The word is " + word)
+    #print("The word is " + word) CHECK FOR TESTING
 
     word_completion = "_" * len(word) #length of chosen word
     guessed = False
