@@ -300,30 +300,41 @@ def get_rand_word():
     valid_category = ["1", "2", "3", "4", "5", "6", "7"]
     words_sheet = SHEET.worksheet('words')
     # check category selection is valid
-    if category not in valid_category:
-        print(f"{Back.BLUE+Style.BRIGHT}Sorry, that is not a valid selection.")
-        get_rand_word()
-    elif category == "1":
-        words_list = words_sheet.col_values(1)
-        category_name = "Countries"
-    elif category == "2":
-        words_list = words_sheet.col_values(2)
-        category_name = "Sports"
-    elif category == "3":
-        words_list = words_sheet.col_values(3)
-        category_name = "Zoo Animals"
-    elif category == "4":
-        words_list = words_sheet.col_values(4)
-        category_name = "Fruit"
-    elif category == "5":
-        words_list = words_sheet.col_values(5)
-        category_name = "Capital Cities (Europe)"
-    elif category == "6":
-        words_list = words_sheet.col_values(6)
-        category_name = "Harry Potter"
-    elif category == "7":
-        words_list = words_sheet.col_values(7)
-        category_name = "Pokémon"
+    while True:
+        category = input("\nPlease select a category from the choices above: \n")
+
+        if category == "1":
+            words_list = words_sheet.col_values(1)
+            category_name = "Countries"
+        elif category == "2":
+            words_list = words_sheet.col_values(2)
+            category_name = "Sports"
+        elif category == "3":
+            words_list = words_sheet.col_values(3)
+            category_name = "Zoo Animals"
+        elif category == "4":
+            words_list = words_sheet.col_values(4)
+            category_name = "Fruit"
+        elif category == "5":
+            words_list = words_sheet.col_values(5)
+            category_name = "Capital Cities (Europe)"
+        elif category == "6":
+            words_list = words_sheet.col_values(6)
+            category_name = "Harry Potter"
+        elif category == "7":
+            words_list = words_sheet.col_values(7)
+            category_name = "Pokémon"
+        elif category not in valid_category:
+            print(f"{Back.BLUE+Style.BRIGHT}Sorry, that is not a valid selection.")
+            time.sleep(3)  # delay message
+            clear_terminal()
+            get_rand_word()
+        else:
+            print(f"{Back.BLUE+Style.BRIGHT}Sorry, only numbers 1-7 are allowed.")
+            time.sleep(3)  # delay message
+            clear_terminal()
+            get_rand_word()
+
     # words_list = words_sheet.get_all_values()
     random_word = random.choice(words_list)
 
@@ -358,7 +369,6 @@ def play_hangman(word):
     """
     clear_terminal()
 
-    print("______________________________\n")
     print(f"Greetings {player_name}! Glad to have you playing today!\n")
 
     # print("The word is " + word) CHECK FOR TESTING
