@@ -71,9 +71,9 @@ The user has 3 options to choose from on this first screen:
 User input is needed to proceed. The user can select 1, 2 or 3 and hit enter to proceed. 
 The main_menu() function contains the code which deals with this initial screen. The list:
 
-'''
+```
     valid_menu_selection = ['1', '2', '3']
-'''
+```
 
 is used to validate the user's selection. A selection entered outside of this list, e.g. 5 or "f", would result in an error message "INVALID CHOICE! Sorry, option not allowed." In this case, the user is again prompted to input a valid choice 1, 2, or 3. 
 
@@ -94,64 +94,67 @@ The first part of playing the Hangman game involves a users being prompted to se
 
 In order to ensure a valid category is selected, there is a list: 
 
-'''
+```
     valid_category = ["1", "2", "3", "4", "5", "6", "7"]
-'''
+```
 
-A while loop runs which prompts the user to select a category from the above list, input it and press enter. This input is stored as '''category'''. The while loop checks the value stored in '''category'''. If a valid number from the '''valid_category''' list is entered, the '''words_list''' variable is changed accordingly. There is a column for each category in '''words_list''' stored in the "words" sheet in Google Sheets Spreadsheets (LINK). Once a valid option is chosen, the loop is exited in order to proceed to generating a random word. 
+A while loop runs which prompts the user to select a category from the above list, input it and press enter. This input is stored as `category`. The while loop checks the value stored in `category`. If a valid number from the `valid_category` list is entered, the `words_list` variable is changed accordingly. There is a column for each category in `words_list` stored in the "words" sheet in Google Sheets Spreadsheets (LINK). Once a valid option is chosen, the loop is exited in order to proceed to generating a random word. 
 
-The Python random (LINK) library is used to generate a random choice from the '''words_list'''. This random word is assigned to the variable '''random_word'''. The random word is then converted to a string with '''str()''' and made uppercase with '''.upper()'''. Finally, non-aphanumeric characters are removed from the random word string. (SEE BUGS FOR MORE DETAILS ON THIS)
+The Python random (LINK) library is used to generate a random choice from the `words_list`. This random word is assigned to the variable `random_word`. The random word is then converted to a string with `str()` and made uppercase with `.upper()`. Finally, non-aphanumeric characters are removed from the random word string. (SEE BUGS FOR MORE DETAILS ON THIS)
 
-'''
-# return random word as string, remove non-alphanumeric characters
+```
+return random word as string, remove non-alphanumeric characters
+
     word_to_string = str(random_word).upper()
     word_remove_non_alpha = filter(str.isalpha,word_to_string)
     word="".join(word_remove_non_alpha)
 
     return word
-'''
+```
 
-There is a defence included in case of an incorrect or invalid entry from the user. Anything entered which is not in the '''valid_category''' list will result in an error message in blue text appearing. The user will be again prompted to input a valid category selection. 
+There is a defence included in case of an incorrect or invalid entry from the user. Anything entered which is not in the `valid_category` list will result in an error message in blue text appearing. The user will be again prompted to input a valid category selection. 
 
-'''
-elif category not in valid_category:
-    print(f"{color_blue}Sorry, that is not a valid selection.")
-    print(f"{color_blue}Only number 1 - 7 allowed.")
-    time.sleep(2)  # delay message
-    continue
-'''
+```
+    elif category not in valid_category:
+        print(f"{color_blue}Sorry, that is not a valid selection.")
+        print(f"{color_blue}Only number 1 - 7 allowed.")
+        time.sleep(2)  # delay message
+        continue
+```
 
-![screenshot - Category Selection]()
+![screenshot - Category Selection](documentation/features-category-selection.png)
 
 #### Input Username
 
-After a valid category is selected, the screen is cleared and there is a loading message, to delay all information appearing to the user at once. The time library (LINK) is imported at the top of the run.py file so that the '''sleep()''' function can be used throughout the game to delay/pause user feedback. 
+After a valid category is selected, the screen is cleared and there is a loading message, to delay all information appearing to the user at once. The time library (LINK) is imported at the top of the run.py file so that the `sleep()` function can be used throughout the game to delay/pause user feedback. 
 
 The category the user selected is clarified. The user is then prompted to input their username. The reason for this is twofold:
 * to provide a more personalised user experience (e.g. Congrats Colin!).
 * initial plans included being able to save scores to Google Sheets. This turned out to be beyond the scope of this project.
 
-The username prompt runs in a '''while True:''' loop. The '''player_name''' is returned and stored in the global variable '''player_name''' upon entering a valid username. 
+The username prompt runs in a `while True:` loop. The `player_name` is returned and stored in the global variable `player_name` upon entering a valid username. 
 
 Validation code is included here to prevent users entering 0 or an empty string. 
-'''
-# validate username
+```
+validate username
 if len(player_name) == 0 or player_name == "":
     print(f"{color_blue}Sorry, you must enter a username!")
     continue
-'''
+```
 There is additional validation code to catch the error of a user entering a username which is non-alphabetic. 
-'''
+```
 elif not player_name.isalpha():
     print(f"{color_blue}Sorry, your name must be letters ONLY!")
     continue
-'''
+```
 
 The while loop runs until a valid username is entered and the user hits enter. 
 
-![screenshot - Username]()
+![screenshot - Username](documentation/features-username.png)
 
 #### Hangman Game Play Screen
+
+![screenshot - Username](documentation/features-main-game-play-1.png)
 
 #### Winner Screen
 
