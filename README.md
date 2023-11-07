@@ -60,6 +60,13 @@ Returning Users
 
 ### Flow Chart
 
+<details>
+<summary>Initial Flow Chart</summary>
+
+![Flow Chart - Initial/Original Flow Chart](documentation/readme-files/Hangman-Python-Flow-Initial.png)
+
+</details>
+
 [Back to top ⇧](#hangman-python-game)
 
 ## Features
