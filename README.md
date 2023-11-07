@@ -77,7 +77,7 @@ The main_menu() function contains the code which deals with this initial screen.
 
 is used to validate the user's selection. A selection entered outside of this list, e.g. 5 or "f", would result in an error message "INVALID CHOICE! Sorry, option not allowed." In this case, the user is again prompted to input a valid choice 1, 2, or 3. 
 
-![screenshot - Main Menu]()
+![screenshot - Main Menu](documentation/features-main-menu.png)
 
 ### Play Hangman
 
@@ -241,7 +241,7 @@ If the user wins, the terminal is first cleared in order to provide the relevant
         print(f"{color_green}Woohoo...you saved the Hangman by guessing the word {word}!")
         play_hangman_again()
 ```
-![screenshot - Game Win](documentation/features-.png)
+![screenshot - Game Win](documentation/features-game-win.png)
 
 #### Game Over Screen
 
@@ -260,7 +260,7 @@ If the user loses, the terminal is first cleared in order to provide the relevan
         play_hangman_again()
 ``` 
 
-![screenshot - Game Loss](documentation/features-.png)
+![screenshot - Game Loss](documentation/features-game-over.png)
 
 #### Play Again
 
@@ -301,7 +301,7 @@ There is additional validation code included to account for an error, whereby th
         continue  
 ```
 
-![screenshot - Play Again](documentation/features-.png)
+![screenshot - Play Again](documentation/features-play-again.png)
 
 ### Game Rules 
 
@@ -316,7 +316,7 @@ Users can view the game instructions/rules from the main menu, by selecting opti
 
 Firstly, the `show_instructions()` function calls `clear_terminal()` so as to declutter the screen for ease of user viewing. Next the `RULES_ART` is printed, which is a large ASCII artwork title heading. Following this a multiple line string of text is displayed informing the user of how the game works, the game rules and how to win/lose the game (the Hangman game outcomes). You can read these rules from the screenshot below. 
 
-![screenshot - Games Rules/Instructions](documentation/features-.png)
+![screenshot - Games Rules/Instructions](documentation/features-game-rules.png)
 
 To return to the main menu the user is told to hit the return key. If the user enters anything other than return, an invalid choice error message is displayed and the user is prompted to enter the correct key. 
 
@@ -345,7 +345,7 @@ Users can exit the game from the main menu, by selecting option '3'. When a user
         clear_terminal()
         exit()
 ```
-![screenshot - Exit](documentation/features-.png)
+![screenshot - Exit](documentation/features-exit-hangman.png)
 
 ### Clear Terminal 
 

@@ -212,7 +212,7 @@ def main_menu():
     print("Type 1: To play the game")
     print("Type 2: For game rules")
     print("Type 3: To exit")
-    print("______________________________\n")
+    print("______________________________")
     menu_option = input("Please choose an option 1, 2 or 3 and press Enter:\n")
     valid_menu_selection = ['1', '2', '3']
 
