@@ -305,7 +305,62 @@ There is additional validation code included to account for an error, whereby th
 
 ### Game Rules 
 
+It is vital that a user can view the game instructions so that they can gain optimal enjoyment and use of the Hangman game. 
+
+Users can view the game instructions/rules from the main menu, by selecting option '2'. When a user inputs 2 the `menu_option` variables becomes 2, resulting in the `show_instructions()` function being called. 
+
+```
+    elif menu_option == '2':
+        show_instructions()
+```
+
+Firstly, the `show_instructions()` function calls `clear_terminal()` so as to declutter the screen for ease of user viewing. Next the `RULES_ART` is printed, which is a large ASCII artwork title heading. Following this a multiple line string of text is displayed informing the user of how the game works, the game rules and how to win/lose the game (the Hangman game outcomes). You can read these rules from the screenshot below. 
+
+![screenshot - Games Rules/Instructions](documentation/features-.png)
+
+To return to the main menu the user is told to hit the return key. If the user enters anything other than return, an invalid choice error message is displayed and the user is prompted to enter the correct key. 
+
+```
+    while True:
+        return_to_menu = input("Press Enter to return to the main menu. \n")
+        if return_to_menu == "":
+            main_menu()
+            break
+        else:
+            print(color_blue + "INVALID CHOICE! Sorry, option not allowed.")
+```
+
 ### Exit Hangman
+
+When a user no longer wants to play Hangman they can choose to exit the game. This is an option on the main menu.
+
+Users can exit the game from the main menu, by selecting option '3'. When a user inputs 3 the `menu_option` variables becomes 3, resulting in a number of outcomes. A user-friendly, informative message is first printed. Then the user is informed that the game is now exiting... `time.sleep(4)` pauses the execution of the code and results in a short pause while the user reads the aforementioned messages. Finally the screen is clearer and `exit()` is callled, to close the game/stop execution of `run.py`.
+
+```
+    elif menu_option == '3':
+        print("______________________________\n")
+        print("Thanks for visiting! See you next time.")
+        print("Exiting game now...")
+        time.sleep(4)  # delay exit for 3 seconds to show message
+        clear_terminal()
+        exit()
+```
+![screenshot - Exit](documentation/features-.png)
+
+### Clear Terminal 
+
+The code for clearing the terminal screen was sourced from [Geeks for Geeks](https://www.geeksforgeeks.org/clear-screen-python/). It is utilised throughout the `run.py` Python file in order to clear the screen/terminal for the user. It makes each step of gameplay clearer, allows for clearer user feedback and error messages, declutters the screen and improves the overall user experience. It is a vital function for the Hangman game to run smoothly and be an effective game. 
+
+```
+def clear_terminal():
+    >>  for windows
+    if name == 'nt':
+        _ = system('cls')
+
+    >>  for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
+```
 
 ### Features to Implement in the Future
 
