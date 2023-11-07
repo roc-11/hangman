@@ -2,7 +2,7 @@
 
 ## Developer: Róisín O'Connell 
 
-![Hangman Mockup Images]()
+![Hangman Mockup Images](documentation/mockup-hangman-image.png)
 
 [View the live project here](https://hangman-roc-9218949e7f7b.herokuapp.com/)
 
@@ -28,6 +28,8 @@ The main requirements of this project are to build a command-line application th
 Hangman is a word guessing game where a player tries to reveal a hidden word by suggesting individual letters. And incorrect guess results in a piece of a hangman figure being drawn, while correct guesses reveal the guessed letter's position. You can read more about the Hangman game in general here (LINK).
 
 Step by step version of how to play here
+
+[Back to top ⇧](#hangman-python-game)
 
 ## UX
 
@@ -58,6 +60,8 @@ Returning Users
 
 ### Flow Chart
 
+[Back to top ⇧](#hangman-python-game)
+
 ## Features
 
 ### Main Menu
@@ -69,7 +73,7 @@ The user has 3 options to choose from on this first screen:
 3. Exit
 
 User input is needed to proceed. The user can select 1, 2 or 3 and hit enter to proceed. 
-The main_menu() function contains the code which deals with this initial screen. The list:
+The `main_menu()` function contains the code which deals with this initial screen. The list:
 
 ```
     valid_menu_selection = ['1', '2', '3']
@@ -78,6 +82,8 @@ The main_menu() function contains the code which deals with this initial screen.
 is used to validate the user's selection. A selection entered outside of this list, e.g. 5 or "f", would result in an error message "INVALID CHOICE! Sorry, option not allowed." In this case, the user is again prompted to input a valid choice 1, 2, or 3. 
 
 ![screenshot - Main Menu](documentation/features-main-menu.png)
+
+[Back to top ⇧](#hangman-python-game)
 
 ### Play Hangman
 
@@ -98,9 +104,9 @@ In order to ensure a valid category is selected, there is a list:
     valid_category = ["1", "2", "3", "4", "5", "6", "7"]
 ```
 
-A while loop runs which prompts the user to select a category from the above list, input it and press enter. This input is stored as `category`. The while loop checks the value stored in `category`. If a valid number from the `valid_category` list is entered, the `words_list` variable is changed accordingly. There is a column for each category in `words_list` stored in the "words" sheet in Google Sheets Spreadsheets (LINK). Once a valid option is chosen, the loop is exited in order to proceed to generating a random word. 
+A while loop runs which prompts the user to select a category from the above list, input it and press enter. This input is stored as `category`. The while loop checks the value stored in `category`. If a valid number from the `valid_category` list is entered, the `words_list` variable is changed accordingly. There is a column for each category in `words_list` stored in the "words" sheet in [Google Sheets Spreadsheets](https://docs.google.com/spreadsheets/d/1E8oiWccbxZau_ZdFplxTz3HfzBVmHai4kuNfuKxWTEg/edit#gid=0). Once a valid option is chosen, the loop is exited in order to proceed to generating a random word. 
 
-The Python random (LINK) library is used to generate a random choice from the `words_list`. This random word is assigned to the variable `random_word`. The random word is then converted to a string with `str()` and made uppercase with `.upper()`. Finally, non-aphanumeric characters are removed from the random word string. (SEE BUGS FOR MORE DETAILS ON THIS)
+The [Python random library](https://docs.python.org/3/library/random.html) is used to generate a random choice from the `words_list`. This random word is assigned to the variable `random_word`. The random word is then converted to a string with `str()` and made uppercase with `.upper()`. Finally, non-aphanumeric characters are removed from the random word string. (SEE BUGS FOR MORE DETAILS ON THIS)
 
 ```
 return random word as string, remove non-alphanumeric characters
@@ -124,9 +130,11 @@ There is a defence included in case of an incorrect or invalid entry from the us
 
 ![screenshot - Category Selection](documentation/features-category-selection.png)
 
+[Back to top ⇧](#hangman-python-game)
+
 #### Input Username
 
-After a valid category is selected, the screen is cleared and there is a loading message, to delay all information appearing to the user at once. The time library (LINK) is imported at the top of the run.py file so that the `sleep()` function can be used throughout the game to delay/pause user feedback. 
+After a valid category is selected, the screen is cleared and there is a loading message, to delay all information appearing to the user at once. The [Python time library](https://docs.python.org/3/library/time.html) is imported at the top of the run.py file so that the `sleep()` function can be used throughout the game to delay/pause user feedback. 
 
 The category the user selected is clarified. The user is then prompted to input their username. The reason for this is twofold:
 * to provide a more personalised user experience (e.g. Congrats Colin!).
@@ -150,6 +158,8 @@ elif not player_name.isalpha():
 The while loop runs until a valid username is entered and the user hits enter. 
 
 ![screenshot - Username](documentation/features-username.png)
+
+[Back to top ⇧](#hangman-python-game)
 
 #### Hangman Game Play Screen
 
@@ -226,6 +236,8 @@ The game play runs in a loop `while not guessed and tries > 0:`. The code runs a
 
 After each iteration of the main gameplay loop, or each user guess, feedback is provided to the user. The number of tries/lives remaining is shown in CYAN coloured text. The length of the mystery word is shown in MAGENTA. The Hangman is drawn, and `word_completion` is shown (with _ or correct letters or a combination, depending on state of game play).
 
+[Back to top ⇧](#hangman-python-game)
+
 #### Winner Screen
 
 If the variable `guessed` equals True, the player/user wins. `guessed` only returns True when all the letters are guessed correctly in the secret word, so `word_completion` no longer contains dashes '_' (as explained ABOVE LINK).
@@ -261,6 +273,8 @@ If the user loses, the terminal is first cleared in order to provide the relevan
 ``` 
 
 ![screenshot - Game Loss](documentation/features-game-over.png)
+
+[Back to top ⇧](#hangman-python-game)
 
 #### Play Again
 
@@ -302,6 +316,8 @@ There is additional validation code included to account for an error, whereby th
 ```
 
 ![screenshot - Play Again](documentation/features-play-again.png)
+
+[Back to top ⇧](#hangman-python-game)
 
 ### Game Rules 
 
@@ -347,6 +363,8 @@ Users can exit the game from the main menu, by selecting option '3'. When a user
 ```
 ![screenshot - Exit](documentation/features-exit-hangman.png)
 
+[Back to top ⇧](#hangman-python-game)
+
 ### Clear Terminal 
 
 The code for clearing the terminal screen was sourced from [Geeks for Geeks](https://www.geeksforgeeks.org/clear-screen-python/). It is utilised throughout the `run.py` Python file in order to clear the screen/terminal for the user. It makes each step of gameplay clearer, allows for clearer user feedback and error messages, declutters the screen and improves the overall user experience. It is a vital function for the Hangman game to run smoothly and be an effective game. 
@@ -364,13 +382,61 @@ def clear_terminal():
 
 ### Features to Implement in the Future
 
+In the future I would like to build upon the Hangman games functionality and add some additional features. 
+
+#### Difficulty Level Option 
+
+You will see from my initial flow chart that I intending to implement an option for difficulty, so that the user could select EASY, MEDIUM or HARD levels while playing Hangman. This would provide an additional challenge to the user. I will implement this by having a function, similar to the choose category section. This input will appear before category selection. The knock on effect would be that I will edit my Google Sheets - add a duplicate sheet of words, except one sheet would contain 7 category columns of easy words, one for medium, etc. I unfortunately ran out of time to implement this on this particular version of my Hangman game. This will be Hangman V2!
+
+#### Scoring System 
+
+I also intended on adding a score functionality. I wished to do this by making a Score class. This would hold all the player data (name, score, etc.). Scores would be saved to Google Sheets. This is why I made the player 'user_name' variable global, however, it was again outside the scope of this Python project as time did not permit. This will be in Hangman V3!
+
+[Back to top ⇧](#hangman-python-game)
+
 ## Technologies Used
 
-## Frameworks, Libraries & Programs Used
+* [Python](https://www.python.org/)
+ - View my python code [here](https://github.com/roc-11/hangman/blob/main/run.py)
+
+### Python Libraries
+
+- [oauth2](https://pypi.org/project/python-oauth2/)
+    - Used for authentication.
+- [gspread](https://docs.gspread.org/en/latest/)
+    - Used to pull from and push to a Google Sheet.
+- [random](https://docs.python.org/3/library/random.html)
+    - Used to randomly select the word for the game.
+- [os](https://docs.python.org/3/library/os.html)
+    - Used for its `clear` tool, to clear the terminal window.
+- [time](https://docs.python.org/3/library/time.html)
+    - Used to pause code execution so messages can display to user.
+- [colorama](https://pypi.org/project/colorama/)
+    - Used to colour feedback messages for the user.
+- [re](https://docs.python.org/3/library/re.html)
+    - regular expression library used to remove non-alpha characters from string.
 
 ## Testing
 
+[Back to top ⇧](#hangman-python-game)
+
 ## Bugs/Known Issues
+
+### Incorrect Word Length
+I ran into difficulty near the beginning of my Python game development when generating the mystery word. The mystery word's length was far longer than the actual word generated from my Google Sheet. I would print the generated word so I could see it, e.g. Peru. Peru has 4 letters/characters. So `word_completion` should have been 4 dashes (`_ * len(word`) however, the word length was appending 2 characters to the beginning and end of the word. So Peru had 8 letters and was showing like so "_ _ P E R U _ _ ". I took a step back and printed `random_word = random.choice(words_list)`. 
+
+On first glance all looked fine, but I realised that when I converted word to a string, the square brackets and ' became part of the string. So Peru was `['PERU']` and a dash was added for the brackets and speech marks. To rectify this error I removed these characters with these 2 lines of code, to provide me with `word` (the mystery word) in the format that I desired. 
+
+```
+    word_remove_non_alpha = filter(str.isalpha, word_to_string)
+    word = "".join(word_remove_non_alpha)
+```
+
+### Incorrect Category Validation
+
+Another bug I ran into was that my initial category select if/elif/else block did not work as intended. My temporary mentor Tim Nelson helpfully pointed out that selected a valid category was fine, but if the user selected an invalid category, e.g. 8, that the `category` variable held 8, even when the user tried again to enter a valid response. I overcame this by re-writing this code in a `while True` loop, with the error/validation message in the else block. If an correct category is selected, `break` exits the loop and the while loop is ended.
+
+[Back to top ⇧](#hangman-python-game)
 
 ## Deployment
 
@@ -463,7 +529,11 @@ You can fork this repository by using the following steps:
 2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
+[Back to top ⇧](#hangman-python-game)
+
 ## Credits
 
 ## Acknowledgements
+
+[Back to top ⇧](#hangman-python-game)
 
