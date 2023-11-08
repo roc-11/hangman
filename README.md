@@ -51,7 +51,15 @@ Returning Users
 
 ### Flow Chart
 
-![Flow Chart - Initial/Original Flow Chart](documentation/hangman-python-flow-initial.png)
+To follow best practice, a flowchart was created for the app's logic,
+and mapped out before coding began using a free version of
+[Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning) and/or [Draw.io](https://www.draw.io).
+
+Below is the flowchart of the main process of this Python program. It shows the entire cycle of the program. The left shows the initial intended project flowchart, and the right shows the final project flowchart.
+
+| Initial | Final |
+| --- | --- |
+| ![Flow Chart - initial concept](documentation/hangman-python-flow-initial.png) | ![Flow Chart - final concept](documentation/hangman-python-flow-final.png) |
 
 [Back to top ⇧](#hangman-python-game)
 
@@ -392,24 +400,66 @@ I also intended on adding a score functionality. I wished to do this by making a
 * [Python](https://www.python.org/)
  - View my python code [here](https://github.com/roc-11/hangman/blob/main/run.py)
 
-### Python Libraries
+### Python Classes & Functions
+
+The primary functions used on this application are:
+
+- `clear_terminal()`
+    - Clears the terminal. Code from:
+    https://www.geeksforgeeks.org/clear-screen-python/
+- `main_menu()`
+    - Main menu shown to user on startup.
+    - Provide user with 3 options (1 play, 2 rules, 3 exit)
+- `show_instructions()`
+    - Show user game instructions.
+    - User will access these by selecting "2" on main menu.
+- `welcome()`
+    - Welcome user to the game on start up.
+    - Gets user_name input from user.
+- `get_rand_word()`
+    - Get user category selection.
+    - Get random word from Google Sheets words list.
+- `play_hangman_again()`
+    - Asks user if they would like to play Hangman again, by entering Y or N.
+    - Validate yes/no selection.
+- `play_hangman(word)`
+    - Function to play the game
+- `__main__`
+    - Start the game by calling the main function.
+    - Future use: initialise variables needed for SCORING SYSTEM. 
+
+Classes as a blueprint for the project's objects (OOP). This allows for the object to be reusable. It was intended that a Class Score would be used in this project to deal with the Scoring system and player details. Due to time constraints, this turned out to be beyond the scope of this Python Project. Below is a sample of the code that was starting before this feature had to be abandoned:
+
+```py
+class Score():
+    """
+    A class to deal with scores in the Hangman game.
+    """
+
+    def __init__(self, player, wins):
+        """ Initializes the Hangman score """
+        self.player = player
+        self.wins = wins
+```
+
+### Python Libraries (Imports)
 
 - [oauth2](https://pypi.org/project/python-oauth2/)
-    - Used for authentication.
+    - used for authentication for the Google Sheets API credentials
 - [gspread](https://docs.gspread.org/en/latest/)
-    - Used to pull from and push to a Google Sheet.
+    - used with the Google Sheets API
 - [random](https://docs.python.org/3/library/random.html)
-    - Used to randomly select the word for the game.
+    - used to randomly select the word for the game/get random choice from a list
 - [os](https://docs.python.org/3/library/os.html)
-    - Used for its `clear` tool, to clear the terminal window.
+    - used for its `clear` tool, to clear the terminal window
 - [time](https://docs.python.org/3/library/time.html)
-    - Used to pause code execution so messages can display to user.
+    - used to pause code execution so messages can display to user (adding time delays)
 - [colorama](https://pypi.org/project/colorama/)
-    - Used to colour feedback messages for the user.
-- [re](https://docs.python.org/3/library/re.html)
-    - regular expression library used to remove non-alpha characters from string.
+    - used for including color in the terminal (colour feedback messages for the user)
 
 ## Testing
+
+For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
 [Back to top ⇧](#hangman-python-game)
 
@@ -428,6 +478,10 @@ On first glance all looked fine, but I realised that when I converted word to a 
 ### Incorrect Category Validation
 
 Another bug I ran into was that my initial category select if/elif/else block did not work as intended. My temporary mentor Tim Nelson helpfully pointed out that selected a valid category was fine, but if the user selected an invalid category, e.g. 8, that the `category` variable held 8, even when the user tried again to enter a valid response. I overcame this by re-writing this code in a `while True` loop, with the error/validation message in the else block. If an correct category is selected, `break` exits the loop and the while loop is ended.
+
+For more information on bugs during testing, please refer to the [TESTING.md](TESTING.md) file.
+
+There are no remaining bugs that I am aware of.
 
 [Back to top ⇧](#hangman-python-game)
 
