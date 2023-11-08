@@ -9,16 +9,28 @@
 [View GitHub repository](https://github.com/roc-11/hangman)
 
 ## Introduction
-Hangman is a Python-based terminal game, which runs in the [Code Institute](https://codeinstitute.net/ie/ "Link to Code Institute homepage") mock terminal on [Heroku](https://www.heroku.com/ "Link to Heroku hompepage"). This project enables users to guess letters in order to reveal the mystery word. Users can select a level of difficulty and words are categorized into different categories. Users can make up to 6 incorrect guesses. Visual feedback is provided to users via ASCII Hangman illustrations for incorrect guesses.
+Hangman is a Python-based terminal game, which runs in the [Code Institute](https://codeinstitute.net/ie/ "Link to Code Institute homepage") mock terminal on [Heroku](https://www.heroku.com/ "Link to Heroku hompepage"). This project enables users to guess letters in order to reveal the mystery word. Words are categorized into different categories which users can select from. Users can make up to 6 incorrect guesses. Visual feedback is provided to users via ASCII Hangman illustrations for incorrect guesses.
 
 The game was made for the third of five Milestone Projects required to complete the Diploma in Full Stack Software Development (e-Commerce Applications) program at [Code institute](https://codeinstitute.net/ie/ "Link to Code Institute homepage").
 
 The main requirements of this project are to build a command-line application that is useful and usable, and allows users to manage a common dataset about a particular domain.
 
-## How To Play
-Hangman is a word guessing game where a player tries to reveal a hidden word by suggesting individual letters. And incorrect guess results in a piece of a hangman figure being drawn, while correct guesses reveal the guessed letter's position. You can read more about the Hangman game in general here (LINK).
+## How To Play Hangman
+Hangman is a word guessing game where a player tries to reveal a hidden word by suggesting individual letters. And incorrect guess results in a piece of a hangman figure being drawn, while correct guesses reveal the guessed letter's position. You can read more about the Hangman game in general [here](https://www.wikihow.com/Play-Hangman).
 
-Step by step version of how to play here
+# How to Play PYTHON HANGMAN
+
+1. Click this []ink](https://hangman-roc-9218949e7f7b.herokuapp.com/) to take you to the mock terminal.
+2. Once the page is loaded, click 'RUN PROGRAM'.
+3. Get familiar with the program - entering 2 to learn the rules of the game. 
+4. Begin a Hangman game by inputting 2 on the main menu. 
+5. Select a word category and input your username. Now you are ready to play!
+6. A secret word will generated. A message will appear clarifying how many letters are in the word, and each letter will be shown with a "_".
+7. Start guessing letters, one at a time. Each correct letter guess reveals its position in the word! :) 
+8. Careful now! And incorrect guess will lose you a life and a piece of the Hangman will be hanged/drawn. :( 
+9. If you correctly guess all the letters before you lose your lives - then CONGRATS YOU WIN!! The word has been revealed and you've saved the Hangman!
+If you lose all 6 lives - the SORRY YOU LOSE!! The Hangman is hanged. The mystery word will be revealed. 
+10. Choose if you would like to play again or not.
 
 [Back to top ⇧](#hangman-python-game)
 
@@ -33,26 +45,54 @@ The aim of this project is to build a Python-based Hangman game, which is fun an
 * To provide users with a terminal-based game of Hangman which they can play.
 * To produce a Python-based Hangman game which both challenges and entertains users.
 * To create an environment and rules that are easily interpreted and accessible for users.
-* To implement error and exception handling to provide users with useful and informative feedback, and make for a better game experience.
+* To implement error and exception handling to provide users with useful and informative feedback, and make for a better, more functional game experience.
+* To meet the [user goals](#user-goalsstories)
 
 #### User Goals/Stories
 
 New Users
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
+- As a new site user, I would like to read the rules/instructions, so that I can learn how to play and understand the game correctly.
+- As a new site user, I would like to have fun and be challenged, so that I can enjoy playing the game.
+- As a new site user, I would like a variety of word categories, so that I can replay the game many times.
+- As a new site user, I would like to know how many guesses I have left when playing, so that I can be more tactical and careful with my guesses.
+- As a new site user, I would like feedback after my guess, so that I can adjust my game strategy.
+- As a new site user, I would like to be able to play again, so that I can improve my skills.
 
 Returning Users
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
+- As a returning site user, I would like to I would like to read the rules/instructions, so that I can remember how to play correctly.
+- As a returning site user, I would like to to have fun and be challenged, so that I can enjoy playing the game.
+- As a returning site user, I would like to a variety of word categories, so that I can replay the games and experience new words each time I play.
+- As a returning site user, I would like feedback after my guess, so that I can adjust my game strategy.
+- As a returning site user, I would like to be able to play again, so that I can improve my skills.
 
 ### User Feedback
 
+Feedback is provided to users throughout the application. The [Colorama](https://pypi.org/project/colorama/) library is utilised to improve this feedback. Most of the gameplay and instructions are in the default white text, against the terminal black background. In order to provide more eye-catching and clear user feedback, error messages, invalid entry messages, incorrect guesses and win/loss feedback all appear in different colours. 
+
+The colours are standardised across the app for consistency: 
+- blue text/background: error messages, invalid entries
+- red text/background: loss of life, incorrect guess, lose the game
+- green text/background: correct guess, win the game
+- magenta text/background: number of letters in the mystery word
+- cyan: number of lives/tries/guesses left in the game
+
+In order to make the Python code more readable, the `Colorama` output code is defined in variables at the top of the file, after the `Colorama` is initialized. `Autoreset` is set to TRUE so that text is reset after each use of `Colorama` text output. 
+
+```py
+from colorama import Fore, Back, Style, init
+
+init(autoreset=True)
+
+color_blue = Back.BLUE
+color_red = Fore.RED+Style.BRIGHT
+color_green = Fore.GREEN+Style.BRIGHT
+color_cyan = Fore.CYAN+Style.BRIGHT
+color_magenta = Fore.MAGENTA+Style.BRIGHT
+```
+
 ### Flow Chart
 
-To follow best practice, a flowchart was created for the app's logic,
-and mapped out before coding began using a free version of
+To follow best practice, a flowchart was created for the app's logic, and mapped out before coding began using a free version of
 [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning).
 
 Below is the flowchart of the main process of this Python program. It shows the entire cycle of the program. The left shows the initial intended project flowchart, and the right shows the final project flowchart.
@@ -63,7 +103,7 @@ Below is the flowchart of the main process of this Python program. It shows the 
 
 ### Google Sheets
 
-I made use of Google Sheets in order to store the data for the Python Hangman game. The sheet "words" contains all the possible game words, with one category stored in each column (countries, sports, zoo animals, fruit, capital cities (Europe), Harry Potter, Pokémon). 
+I made use of Google Sheets in order to store the data for the Python Hangman game. The sheet "words" contains all the possible game words, with one category stored in each column (countries, sports, zoo animals, fruit, capital cities (Europe), Harry Potter, Pokémon). These are easily scalable and extendable by adding to the Google Sheet document.
 
 The second sheet "scores" was set up in the beginnig of the program to store all of the user_names and scores saved. This would in turn enable the creation of a leaderboard option on the main menu. The [future implementations](#features-to-implement-in-the-future) section of this file provides more information on how, due to time constraints, this proved to be outside the scope of the project. 
 
@@ -298,7 +338,7 @@ The user input prompt runs in a 'while True' loop. They can enter either Y for y
         play_again = input("Would you like to play Hangman again? Y or N: \n")
 ```
 
-If the user enters 'Y' the terminal is cleared, a new mystery word in generated and `play_hangman(word)` is called, beginning a new Hangman game. This will repeat from [category selection](#category-selection-&-generate-random,-mystery-word) to [Hangman Game Play Screen](#hangman-game-play-screen), as explained above, but won't ask the user for their `user_name` again (as this is stored in a global variable). 
+If the user enters 'Y' the terminal is cleared, a new mystery word in generated and `play_hangman(word)` is called, beginning a new Hangman game. This will repeat from [category selection](#category-selection--generate-random-mystery-word) to [Hangman Game Play Screen](#hangman-game-play-screen), as explained above, but won't ask the user for their `user_name` again (as this is stored in a global variable). 
 
 ```py
     if play_again.upper() == "Y":
