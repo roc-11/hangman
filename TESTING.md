@@ -125,7 +125,7 @@ Defensive programming was manually tested with the below user acceptance testing
 
 - For PP3, when using a helper `clear()` function, any text above the height of the terminal does not clear, and remains when you scroll up.
 
-    ![screenshot](documentation/unfixed-bug02.png)
+    ![screenshot](documentation/testing-clear-scroll-error.png)
 
     - Attempted fix: I tried to adjust the terminal size, but it only resizes the actual terminal, not the allowable area for text.
 
