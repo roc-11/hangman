@@ -5,7 +5,6 @@ Hangman - A Python terminal game by Roisin O'Connell.
 import gspread
 from google.oauth2.service_account import Credentials
 import random
-import re  # regular expression library
 from colorama import Fore, Back, Style, init
 from os import system, name  # import only system from os
 import time
