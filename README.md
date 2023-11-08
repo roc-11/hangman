@@ -457,6 +457,36 @@ class Score():
 - [colorama](https://pypi.org/project/colorama/)
     - used for including color in the terminal (colour feedback messages for the user)
 
+### Frameworks, Libraries & Programs Used
+
+Other frameworks, libraries and programs used:
+
+* [CodeAnywhere](https://codeanywhere.com/signin)
+    * CodeAnywhere was used for writing code, commiting, and then pushing to GitHub.
+    * IDE used to code the project.
+* [GitHub](https://github.com/)
+    * GitHub was used to store the project after pushing
+* [Adobe Photoshop](https://www.adobe.com/ie/ "link to the adobe homepage")
+    * Adobe Photoshop was used to resize images
+* [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning)
+    * Lucidchart was used to create flowcharts for the app's logic.
+* [Website Mockup Generator](https://websitemockupgenerator.com)
+    * Website Mockup Generator was used to generate mockup imagery.
+* [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
+    * Google Chrome Dev Tools was used during the testing phase to test the responsiveness of the site and to check for any bugs.
+* [w3schools](https://www.w3schools.com)
+    * w3schools was used as a guide for Python usage and syntax throughout the project.
+* [Python](https://www.python.org/)
+    * The main Python documentation was consulted throughout the project for usage, syntax, functions, etc. 
+* [Google Sheets](https://www.google.com/sheets/about/)
+    * Google Sheets was used to store the database of words and categories.
+* [Heroku](https://www.heroku.com)
+    * Heroku was used  to deploy the project. 
+* [CI Python Linter](https://pep8ci.herokuapp.com/)
+    * Code Institute Python Linter was used to for Python testing and validation (a PEP8 validator).
+* [Text ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
+    * Text ASCII Art Generator was used to create the winner, game over, rules and Hangman titles.
+
 ## Testing
 
 For all testing, please refer to the [TESTING.md](TESTING.md) file.
@@ -478,6 +508,10 @@ On first glance all looked fine, but I realised that when I converted word to a 
 ### Incorrect Category Validation
 
 Another bug I ran into was that my initial category select if/elif/else block did not work as intended. My temporary mentor Tim Nelson helpfully pointed out that selected a valid category was fine, but if the user selected an invalid category, e.g. 8, that the `category` variable held 8, even when the user tried again to enter a valid response. I overcame this by re-writing this code in a `while True` loop, with the error/validation message in the else block. If an correct category is selected, `break` exits the loop and the while loop is ended.
+
+### Error Messages Not Displaying
+
+Many of my error/invalid entry feedback messages were not showing during the development process. This was a simple fix. I imported the time library to used the `time.sleep()` function. This delays execution of the code and results in a short pause from the user's point of view. The message displays in blue background text (so that it is immediately clear to the user) and tells them why the entry is invalid. The user can then ammend their entry and input a valid option. 
 
 For more information on bugs during testing, please refer to the [TESTING.md](TESTING.md) file.
 
@@ -580,7 +614,30 @@ You can fork this repository by using the following steps:
 
 ## Credits
 
+| Source | Location | Type | Notes |
+| --- | --- | --- | --- |
+| Harry Potter; Pokémon TM | Google Sheets | text | Harry Potter & Pokémon words belong to their respective owners. |
+| [Text ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20) | entire project | ACSII Art | Hangman title, winner, game over, rules headings |
+| [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning) | read me docs | image | flowcharts |
+| [Website Mockup Generator](hhttps://websitemockupgenerator.com) | read me docs | image | mockup image |
+| [Code Institute](https://github.com/Code-Institute-Org/p3-template) | entire project | github template | python essentials template |
+| [“A Simple Hangman” by Aminah Mardiyyah Rufai](https://mardiyyah.medium.com/a-simple-hangman-learnpythonthroughprojects-series-10-fedda58741b) | code | code | start basis for project with this tutorial |
+| [YouTube Tutorial by Kite](https://www.youtube.com/watch?v=m4nEnsavl6w) | code | code | start basis for project with this tutorial |
+| [Remove String Character](https://builtin.com/software-engineering-perspectives/python-remove-character-from-string) | code | bug fix | information provided in this article was used to solve [this bug](#incorrect-word-length) |
+| [GitHub paulio11](https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py) | Hangman Stages | ACSII Art | the ASCII artwork for the hangman stages was adapted from user paulio11's ASCII artwork |
+| [Geeks for Geeks](https://www.geeksforgeeks.org/how-to-add-colour-to-text-python/) | code | code | information provided in this article helped me to chose the colorama library for colored text |
+| [How To Use Colorama](https://linuxhint.com/colorama-python/) | code | code | information provided in this article helped me to import the colorama library and implement its use correctly |
+| [Geeks for Geeks](https://www.geeksforgeeks.org/clear-screen-python/) | entire project | code | the code for the clear_terminal() function was sourced from this article |
+| [TinyPNG](https://tinypng.com) | entire site | image | tool for image compression |
+
 ## Acknowledgements
+
+- I would like to thank my Code Institute temporary mentor, [Tim Nelson](https://github.com/TravelTimN) for their support throughout the development of this project, especially when my main mentor was not well. 
+- I would like to thank my Code Institute mentor, [Oluwaseun Owonikoko](https://github.com/seunkoko) for their support on getting my project started during the first mentor session.
+- I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
+- I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and imposter syndrome.
+- I would like to thank my partner, for believing in me, and allowing me to make this transition into software development. Also for playing my Hangman game on loop in order to test for bugs!!
+- I would like to thank my employer, for supporting me in my career development change towards becoming a software developer.
 
 [Back to top ⇧](#hangman-python-game)
 
