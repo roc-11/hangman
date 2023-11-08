@@ -77,7 +77,7 @@ MENU_ART = '''
                █▄██▄█                  \\O/   █           ▒▒▌▒▒▐▒▒▌▒
       █▄█▄█▄█▄█▐█┼██▌█▄█▄█▄█▄█          |    █            ▒▀▄▒▌▄▀▒
       ███┼█████▐████▌█████┼███         / \\   █               ██
-░░░░░░█████████▐████▌█████████░░░░░░████████████░░░░░░░░░░░░░██░░░░░░░░░░░░░░
+░░░░░░█████████▐████▌█████████░░░░░░████████████░░░░░░░░░░░░░░██░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░By Róisín O'Connell░░░░░░
 '''
 
@@ -88,9 +88,10 @@ WINNER_ART = '''
                █▄██▄█                  \\O/   █           ▒▒▌▒▒▐▒▒▌▒
       █▄█▄█▄█▄█▐█┼██▌█▄█▄█▄█▄█          |    █            ▒▀▄▒▌▄▀▒
       ███┼█████▐████▌█████┼███         / \\   █               ██
-░░░░░░█████████▐████▌█████████░░░░░░████████████░░░░░░░░░░░░░██░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░! NOT HANGED  !░░░░░░
+░░░░░░█████████▐████▌█████████░░░░░░████████████░░░░░░░░░░░░░░██░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░!  NOT HANGED  !░░░░░░░░░
 '''
+
 
 def display_hangman(tries):
     stages = [  # 6 final state: head, torso, both arms, and both legs
@@ -167,7 +168,7 @@ def display_hangman(tries):
                 █▄██▄█                         █           ▒▒▌▒▒▐▒▒▌▒
         █▄█▄█▄█▄█▐█┼██▌█▄█▄█▄█▄█               █            ▒▀▄▒▌▄▀▒
         ███┼█████▐████▌█████┼███               █               ██
-    ░░░░░░█████████▐████▌█████████░░░░░░████████████░░░░░░░░░░░░░██░░░░░░░░░
+    ░░░░░░█████████▐████▌█████████░░░░░░████████████░░░░░░░░░░░██░░░░░░░░░░░
     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
         '''
     ]
@@ -397,8 +398,6 @@ def play_hangman(word):
 
     print(f"Greetings {player_name}! Glad to have you playing today!\n")
 
-    # print("The word is " + word) CHECK FOR TESTING
-
     word_completion = "_" * len(word)  # length of chosen word
     word_length = len(word)
     guessed = False
@@ -427,7 +426,9 @@ def play_hangman(word):
                 print(f"{color_green}Well done! {guess} is in the word!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
-                indices = [i for i, letter in enumerate(word) if letter == guess]
+                indices = [
+                    i for i, letter in enumerate(word) if letter == guess
+                ]
                 for index in indices:
                     word_as_list[index] = guess
                 # convert back to a string
@@ -451,7 +452,10 @@ def play_hangman(word):
         print(f"{color_green}{WIN_ART}")
         print(WINNER_ART)
         print(f"{color_green}Congrats {player_name}! You win! :) ")
-        print(f"{color_green}Woohoo...you saved the Hangman by guessing the word {word}!")
+        print(
+            f"{color_green}Woohoo..."
+            f"you saved the Hangman by guessing the word {word}!"
+        )
         play_hangman_again()
     else:
         clear_terminal()
