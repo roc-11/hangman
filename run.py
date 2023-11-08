@@ -174,17 +174,6 @@ def display_hangman(tries):
     return stages[tries]
 
 
-class Score():
-    """
-    A class to deal with scores in the Hangman game.
-    """
-
-    def __init__(self, player, wins):
-        """ Initializes the Hangman score """
-        self.player = player
-        self.wins = wins
-
-
 def clear_terminal():
     """
     Clears the terminal. Code from:
@@ -202,7 +191,7 @@ def clear_terminal():
 def main_menu():
     """
     Main menu shown to user on startup.
-    Provide user with 4 options
+    Provide user with 3 options (1 play, 2 rules, 3 exit)
     """
 
     clear_terminal()
@@ -277,6 +266,7 @@ def show_instructions():
 def welcome():
     """
     Welcome user to the game on start up.
+    Gets user_name input from user.
     """
     clear_terminal()
     global player_name
