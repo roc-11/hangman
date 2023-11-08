@@ -61,6 +61,14 @@ Below is the flowchart of the main process of this Python program. It shows the 
 | --- | --- |
 | ![Flow Chart - initial concept](documentation/hangman-python-flow-initial.png) | ![Flow Chart - final concept](documentation/hangman-python-flow-final.png) |
 
+### Google Sheets
+
+I made use of Google Sheets in order to store the data for the Python Hangman game. The sheet "words" contains all the possible game words, with one category stored in each column (countries, sports, zoo animals, fruit, capital cities (Europe), Harry Potter, Pokémon). 
+
+The second sheet "scores" was set up in the beginnig of the program to store all of the user_names and scores saved. This would in turn enable the creation of a leaderboard option on the main menu. The [future implementations](#features-to-implement-in-the-future) section of this file provides more information on how, due to time constraints, this proved to be outside the scope of the project. 
+
+You can view the Google Sheet by clicking [here](https://docs.google.com/spreadsheets/d/1E8oiWccbxZau_ZdFplxTz3HfzBVmHai4kuNfuKxWTEg/edit#gid=0).
+
 [Back to top ⇧](#hangman-python-game)
 
 ## Features
@@ -442,6 +450,8 @@ class Score():
         self.wins = wins
 ```
 
+In a future implementation of this project I intend to modify [StephenForrest's](https://github.com/StephenForrest/HighScores/blob/master/highscores1.py) high score Python module in order to base my own scoring system off. 
+
 ### Python Libraries (Imports)
 
 - [oauth2](https://pypi.org/project/python-oauth2/)
@@ -619,7 +629,7 @@ You can fork this repository by using the following steps:
 | Harry Potter; Pokémon TM | Google Sheets | text | Harry Potter & Pokémon words belong to their respective owners. |
 | [Text ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20) | entire project | ACSII Art | Hangman title, winner, game over, rules headings |
 | [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning) | read me docs | image | flowcharts |
-| [Website Mockup Generator](hhttps://websitemockupgenerator.com) | read me docs | image | mockup image |
+| [Website Mockup Generator](https://websitemockupgenerator.com) | read me docs | image | mockup image |
 | [Code Institute](https://github.com/Code-Institute-Org/p3-template) | entire project | github template | python essentials template |
 | [“A Simple Hangman” by Aminah Mardiyyah Rufai](https://mardiyyah.medium.com/a-simple-hangman-learnpythonthroughprojects-series-10-fedda58741b) | code | code | start basis for project with this tutorial |
 | [YouTube Tutorial by Kite](https://www.youtube.com/watch?v=m4nEnsavl6w) | code | code | start basis for project with this tutorial |
@@ -628,7 +638,6 @@ You can fork this repository by using the following steps:
 | [Geeks for Geeks](https://www.geeksforgeeks.org/how-to-add-colour-to-text-python/) | code | code | information provided in this article helped me to chose the colorama library for colored text |
 | [How To Use Colorama](https://linuxhint.com/colorama-python/) | code | code | information provided in this article helped me to import the colorama library and implement its use correctly |
 | [Geeks for Geeks](https://www.geeksforgeeks.org/clear-screen-python/) | entire project | code | the code for the clear_terminal() function was sourced from this article |
-| [TinyPNG](https://tinypng.com) | entire site | image | tool for image compression |
 
 ## Acknowledgements
 
