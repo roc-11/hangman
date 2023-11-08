@@ -241,7 +241,7 @@ After each iteration of the main gameplay loop, or each user guess, feedback is 
 
 #### Winner Screen
 
-If the variable `guessed` equals True, the player/user wins. `guessed` only returns True when all the letters are guessed correctly in the secret word, so `word_completion` no longer contains dashes '_' (as explained ABOVE LINK).
+If the variable `guessed` equals True, the player/user wins. `guessed` only returns True when all the letters are guessed correctly in the secret word, so `word_completion` no longer contains dashes '_' (explained above)[#hangman-game-play-screen].
 
 If the user wins, the terminal is first cleared in order to provide the relevant congratulatory feedback. `WIN_ART` shows a large ASCII banner 'WINNER' text in green font. This is followed by `WINNER_ART` below the text, which displays a fun ASCII Hangman artwork, consisting of the menu art edited to show the Hangman saying "I'm free!" and "not hanged!". For additional user feedback and an extra-personal touch, a message displaying "congrats" and the `user_name` appears. Finally the mystery word the player guessed is also revealed here in the congratulatory message. 
 
@@ -290,7 +290,7 @@ The user input prompt runs in a 'while True' loop. They can enter either Y for y
         play_again = input("Would you like to play Hangman again? Y or N: \n")
 ```
 
-If the user enters 'Y' the terminal is cleared, a new mystery word in generated and `play_hangman(word)` is called, beginning a new Hangman game. This will repeat from LINK TO LINK ABOVE. 
+If the user enters 'Y' the terminal is cleared, a new mystery word in generated and `play_hangman(word)` is called, beginning a new Hangman game. This will repeat from [category selection](#category-selection-&-generate-random,-mystery-word) to [Hangman Game Play Screen](#hangman-game-play-screen), as explained above, but won't ask the user for their `user_name` again (as this is stored in a global variable). 
 
 ```py
     if play_again.upper() == "Y":
@@ -299,7 +299,7 @@ If the user enters 'Y' the terminal is cleared, a new mystery word in generated 
         play_hangman(word)
 ```
 
-Or else if the user enters 'N', the user will be taken back to the main menu where they can exit the game (3) LINK, get instructions (2) LINK or chooise to play Hangman again (1) LINK TO LINK ABOVE. 
+Or else if the user enters 'N', the user will be taken back to the main menu where they can exit the game [3](#exit-hangman), get instructions [2](#game-rules) or chooise to play Hangman again [1](#hangman-game-play-screen). 
 
 ```py
     elif play_again.upper() == "N":
