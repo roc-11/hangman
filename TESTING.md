@@ -18,9 +18,9 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 | Browser | Notes |
 | --- | --- |
-| ![Chrome](documentation/test-chrome.png) | Works as expected |
-| ![Edge](documentation/test-edge.png) | Works as expected |
-| ![Safari](documentation/test-safari.png) | Loads as expected, mock terminal does not work. Not compatible with Safari |
+| Google Chrome ![Chrome](documentation/test-chrome.png) | Works as expected |
+| Microsoft Edge ![Edge](documentation/test-edge.png) | Works as expected |
+| Safari ![Safari](documentation/test-safari.png) | Loads as expected, mock terminal does not work. Not compatible with Safari |
 
 ## Lighthouse Audit
 
