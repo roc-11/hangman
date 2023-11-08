@@ -59,16 +59,17 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | User Story | Screenshot |
 | --- | --- |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature01.png) |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature02.png) |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature03.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature04.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature05.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature06.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature07.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature08.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature09.png) |
-| repeat for all remaining user stories | x |
+| As a new site user, I would like to read the rules/instructions, so that I can learn how to play and understand the game correctly. | ![screenshot](documentation/feature01.png) |
+| As a new site user, I would like to have fun and be challenged, so that I can enjoy playing the game. | ![screenshot](documentation/feature02.png) |
+| As a new site user, I would like a variety of word categories, so that I can replay the game many times. | ![screenshot](documentation/feature03.png) |
+| As a new site user, I would like to know how many guesses I have left when playing, so that I can be more tactical and careful with my guesses. | ![screenshot](documentation/feature04.png) |
+| As a new site user, I would like feedback after my guess, so that I can adjust my game strategy. | ![screenshot](documentation/feature04.png) |
+| As a new site user, I would like to be able to play again, so that I can improve my skills. | ![screenshot](documentation/feature04.png) |
+| - As a returning site user, I would like to to have fun and be challenged, so that I can enjoy playing the game. | ![screenshot](documentation/feature05.png) |
+| As a returning site user, I would like to a variety of word categories, so that I can replay the games and experience new words each time I play. | ![screenshot](documentation/feature06.png) |
+| As a returning site user, I would like feedback after my guess, so that I can adjust my game strategy. | ![screenshot](documentation/feature06.png) |
+| As a returning site user, I would like to be able to play again, so that I can improve my skills. | ![screenshot](documentation/feature06.png) |
+| As a site administrator, I should be able to add words to the Google Sheet, so that I can extend the game and implement difficulty levels in the future. | ![screenshot](documentation/feature07.png) |
 
 ## Bugs
 
@@ -91,12 +92,6 @@ Defensive programming was manually tested with the below user acceptance testing
     - To fix this, I _____________________.
 
 ## Unfixed Bugs
-
-- On devices smaller than 375px, the page starts to have `overflow-x` scrolling.
-
-    ![screenshot](documentation/unfixed-bug01.png)
-
-    - Attempted fix: I tried to add additional media queries to handle this, but things started becoming too small to read.
 
 - For PP3, when using a helper `clear()` function, any text above the height of the terminal does not clear, and remains when you scroll up.
 

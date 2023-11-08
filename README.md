@@ -59,7 +59,6 @@ New Users
 - As a new site user, I would like to be able to play again, so that I can improve my skills.
 
 Returning Users
-- As a returning site user, I would like to I would like to read the rules/instructions, so that I can remember how to play correctly.
 - As a returning site user, I would like to to have fun and be challenged, so that I can enjoy playing the game.
 - As a returning site user, I would like to a variety of word categories, so that I can replay the games and experience new words each time I play.
 - As a returning site user, I would like feedback after my guess, so that I can adjust my game strategy.
